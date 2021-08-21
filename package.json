@@ -1,0 +1,48 @@
+{
+  "name": "register-a-vehicle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "npm": "^7.9.0"
+  },
+  "workspaces": [
+    "back-end",
+    "front-end"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "start": "npm run copy && cross-env NODE_ENV=production node dist/index.js",
+    "copy": "cp -r back-end/dist . && cp -r front-end/dist dist/ ",
+    "dev:back": "npm run dev --workspace=back-end",
+    "dev:front": "npm run dev --workspace=front-end",
+    "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
+    "fix": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcoAR1/register-a-vehicle.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcoAR1/register-a-vehicle/issues"
+  },
+  "homepage": "https://github.com/MarcoAR1/register-a-vehicle#readme",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^10.0.0",
+    "express-async-errors": "^3.1.1",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "eslint": "^7.32.0",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.5",
+    "tsc-watch": "^4.5.0"
+  }
+}
