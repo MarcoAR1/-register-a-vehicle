@@ -7,6 +7,7 @@ import * as morgan from 'morgan'
 import path = require('path')
 import { PORT, NODE_ENV } from './utils/config'
 import { DEVELOPMENTMODE } from './constants/constants'
+import DATABASE from './db'
 
 export class Server {
   public static app: express.Express
@@ -16,8 +17,14 @@ export class Server {
     Server.app.use(express.json())
     Server.configureApp()
     Server.app.use(express.static(path.join(__dirname, './dist')))
-
-    return Server.app.listen(Server.app.get('port'))
+    DATABASE.initDatabase()
+    return Server.app.listen(Server.app.get('port'), () =>
+      console.log(
+        'Server is running at %d in %s mode',
+        Server.app.get('port'),
+        Server.app.get('env')
+      )
+    )
   }
 
   public static configureApp(): void {

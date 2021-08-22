@@ -6,24 +6,23 @@ import {
   NODE_ENV,
   DB_USER,
   DB_PASSWORD,
-  DATABASE_TEST,
+  DB_NAME_TEST,
   DB_PORT,
-  DATABASE,
+  DB_NAME,
 } from './utils/config'
-console.log(
-  DB_HOST,
-  DB_HOST_TEST,
-  NODE_ENV,
-  DB_USER,
-  DB_PASSWORD,
-  DATABASE_TEST,
-  DB_PORT,
-  DATABASE
-)
-export default new Pool({
-  host: NODE_ENV === TEST ? DB_HOST_TEST : DB_HOST,
-  user: DB_USER,
-  password: DB_PASSWORD,
-  database: NODE_ENV === TEST ? DATABASE_TEST : DATABASE,
-  port: DB_PORT ? +DB_PORT : 5432,
-})
+import Models from './models/index'
+
+export default class DATABASE {
+  public static DB: Pool = new Pool({
+    user: DB_USER,
+    password: DB_PASSWORD,
+    host: NODE_ENV === TEST ? DB_HOST_TEST : DB_HOST,
+    port: DB_PORT ? +DB_PORT : 5432,
+    database: NODE_ENV === TEST ? DB_NAME_TEST : DB_NAME,
+  })
+
+  public static async initDatabase(): Promise<void> {
+    Models.initModels()
+  }
+}
+
