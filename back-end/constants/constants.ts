@@ -1,2 +1,6 @@
 export const DEVELOPMENTMODE = 'development'
 export const TEST = 'TEST'
+export const BASE_URL_API = '/api/'
+export const PATH_INICIAL = '/'
+export const STATIC_PUBLIC_PATH = './dist'
+export const CARS = 'cars'

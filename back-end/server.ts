@@ -4,10 +4,11 @@ import * as express from 'express'
 import * as http from 'http'
 import * as cors from 'cors'
 import * as morgan from 'morgan'
-import path = require('path')
 import { PORT, NODE_ENV } from './utils/config'
 import { DEVELOPMENTMODE } from './constants/constants'
 import DATABASE from './db'
+import { Router } from './routers'
+import { errorHandler } from './errors/ErrorHandler'
 
 export class Server {
   public static app: express.Express
@@ -16,7 +17,8 @@ export class Server {
     Server.app = express()
     Server.app.use(express.json())
     Server.configureApp()
-    Server.app.use(express.static(path.join(__dirname, './dist')))
+    Router.initializeRoutes(Server.app)
+    Server.app.use(errorHandler)
     DATABASE.initDatabase()
     return Server.app.listen(Server.app.get('port'), () =>
       console.log(

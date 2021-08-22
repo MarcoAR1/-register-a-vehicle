@@ -1,4 +1,4 @@
-import { CarDTO } from 'models/dtos/CarDTO'
+import { CarDTO } from '../dtos/CarDTO'
 import { Pool, QueryResult } from 'pg'
 import { BaseModel } from './BaseModel'
 
@@ -36,7 +36,7 @@ export class Car extends BaseModel {
       text: `INSERT INTO cars ($1) VALUES ($2)`,
       values: [Object.keys(data), Object.values(data)],
     }
-    return await this.DB.query(Query)
+    return this.DB.query(Query)
   }
 
   public async getAll(): Promise<QueryResult> {
