@@ -1,21 +1,24 @@
 import { CarDTO } from '../dtos/CarDTO'
-import { Pool, QueryResult } from 'pg'
 import { BaseModel } from './BaseModel'
-
+import { PgType } from '../../db'
+import { ICar } from '../interface/ICar'
+import { NotFoundError } from '../../errors/NotFoundError'
+import { DatabaseError } from '../../errors/DatabaseError'
+import { CARS } from '../../constants/constants'
 export class Car extends BaseModel {
-  private DB: Pool
-  public static tableName = 'cars'
+  public DB: PgType
+  public static tableName = CARS
   public static columnsProperties: { [key: string]: string } = {
     id: 'SERIAL NOT NULL PRIMARY KEY',
-    general: 'TEXT NOT NULL',
-    DOCUMENTACION_Y_MANTENIMIENTO: 'TEXT NOT NULL',
-    RUEDAS__FRENOS__SUSPENSION_Y_DIRECCION: 'TEXT NOT NULL',
-    CARROCERIA: 'TEXT NOT NULL',
-    MOTOR: 'TEXT NOT NULL',
-    ALUMBRADO: 'TEXT NOT NULL',
-    VOLANTE_Y_TABLERO: 'TEXT NOT NULL',
-    INTERIOR_Y_ASIENTOS: 'TEXT NOT NULL',
-    INTERIOR_GENERAL: 'TEXT NOT NULL',
+    general: 'INTEGER NOT NULL',
+    documentacion_y_mantenimiento: 'INTEGER NOT NULL',
+    ruedas__frenos__suspension_y_direccion: 'INTEGER NOT NULL',
+    carrocería: 'INTEGER NOT NULL',
+    motor: 'INTEGER NOT NULL',
+    alumbrado: 'INTEGER NOT NULL',
+    volante_y_tablero: 'INTEGER NOT NULL',
+    interior_y_asientos: 'INTEGER NOT NULL',
+    interior_general: 'INTEGER NOT NULL',
   }
 
   constructor() {
@@ -24,34 +27,43 @@ export class Car extends BaseModel {
   }
 
   public static async initModel(): Promise<void> {
-    const Query = this.getQueryCreateTable(
-      this.columnsProperties,
-      this.tableName
-    )
-    await this.DB().query(Query)
+    await this.getQueryCreateTable(this.columnsProperties, this.tableName)
   }
 
-  public async create(data: CarDTO): Promise<QueryResult> {
-    const Query = {
-      text: `INSERT INTO cars ($1) VALUES ($2)`,
-      values: [Object.keys(data), Object.values(data)],
-    }
-    return this.DB.query(Query)
+  public async create(data: ICar): Promise<CarDTO> {
+    const res = (
+      await this.DB.query(
+        'INSERT INTO cars(${this:name}) VALUES (${this:csv}) RETURNING *',
+        data
+      )
+    )[0]
+    if (!res) throw new DatabaseError('it not posible save this car')
+    return new CarDTO(res)
   }
 
-  public async getAll(): Promise<QueryResult> {
-    return await this.DB.query(`SELECT * FROM cars`)
+  public async getAll(): Promise<CarDTO[]> {
+    const res: ICar[] = await this.DB.query(`SELECT * FROM cars`)
+    return res.map((e) => new CarDTO(e))
   }
 
-  public async getById(id: number): Promise<QueryResult> {
-    return await this.DB.query(`SELECT * FROM cars WHERE id = $1`, [id])
+  public async getById(id: number): Promise<CarDTO> {
+    const res = (
+      await this.DB.query(`SELECT * FROM cars WHERE id = $1`, [id])
+    )[0]
+    if (!res) throw new NotFoundError('card not found with provider id')
+    return new CarDTO(res)
   }
 
-  public async update(id: number, data: CarDTO): Promise<QueryResult> {
-    const Query = {
-      text: `UPDATE INTO cars SET $1 WHERE id = $2`,
-      values: [data, id],
-    }
-    return await this.DB.query(Query)
+  public async update(id: number, data: CarDTO): Promise<CarDTO> {
+    const key = Object.keys(data)
+    const value = Object.values(data)
+    const Query = `UPDATE cars SET ${
+      key.length === 1 ? '$2:name = $3:csv' : '($2:name) = ($3:csv)'
+    } WHERE id = $1 RETURNING *`
+
+    const res = (await this.DB.query(Query, [id, key, value]))[0]
+    if (!res) throw new NotFoundError('card not found with provider id')
+
+    return new CarDTO(res)
   }
 }

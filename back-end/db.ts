@@ -1,5 +1,5 @@
-import { TEST } from './constants/constants'
-import { Pool } from 'pg'
+import { DEVELOPMENTMODE, TEST } from './constants/constants'
+import * as pg from 'pg-promise'
 import {
   DB_HOST,
   DB_HOST_TEST,
@@ -11,18 +11,20 @@ import {
   DB_NAME,
 } from './utils/config'
 import Models from './models/index'
-
 export default class DATABASE {
-  public static DB: Pool = new Pool({
-    user: DB_USER,
-    password: DB_PASSWORD,
-    host: NODE_ENV === TEST ? DB_HOST_TEST : DB_HOST,
-    port: DB_PORT ? +DB_PORT : 5432,
-    database: NODE_ENV === TEST ? DB_NAME_TEST : DB_NAME,
-  })
+  public static DB = pg()(
+    `postgres://${DB_USER}:${DB_PASSWORD}@${
+      NODE_ENV === TEST ? DB_HOST_TEST : DB_HOST
+    }:${DB_PORT ? +DB_PORT : 5432}/${
+      NODE_ENV === TEST ? DB_NAME_TEST : DB_NAME
+    }`
+  )
 
   public static async initDatabase(): Promise<void> {
-    Models.initModels()
+    if (NODE_ENV !== DEVELOPMENTMODE) {
+      await Models.initModels()
+      console.log('finish to init models')
+    }
   }
 }
-
+export type PgType = typeof DATABASE.DB

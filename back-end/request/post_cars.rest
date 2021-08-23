@@ -2,5 +2,13 @@ POST http://localhost:3000/api/cars
 Content-Type: application/json
 
 {
-
+  "general": 0,
+  "documentacion_y_mantenimiento": 0,
+  "ruedas__frenos__suspension_y_direccion": 0,
+  "carrocería": 0,
+  "motor": 0,
+  "alumbrado": 0,
+  "volante_y_tablero": 0,
+  "interior_y_asientos": 0,
+  "interior_general": 0
 }

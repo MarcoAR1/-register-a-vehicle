@@ -1,0 +1,12 @@
+PUT http://localhost:3000/api/generals/1
+Content-Type: application/json
+
+{
+  "motor": "V10",
+  "generación": 1000,
+  "modelo": "thebest",
+  "marca": "msi",
+  "numero_de_plazas": 4,
+  "numero_de_puertas": 4,
+  "tipo_de_carrocería": "tipo de carrocería"
+}

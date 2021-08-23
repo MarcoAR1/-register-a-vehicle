@@ -9,7 +9,6 @@ import { DEVELOPMENTMODE } from './constants/constants'
 import DATABASE from './db'
 import { Router } from './routers'
 import { errorHandler } from './errors/ErrorHandler'
-
 export class Server {
   public static app: express.Express
 

@@ -1,0 +1,12 @@
+POST http://localhost:3000/api/generals
+Content-Type: application/json
+
+{
+  "motor": "V8",
+  "generación": 2000,
+  "modelo": "modelo",
+  "marca": "marca",
+  "numero_de_plazas": 4,
+  "numero_de_puertas": 4,
+  "tipo_de_carrocería": "tipo de carrocería"
+}
