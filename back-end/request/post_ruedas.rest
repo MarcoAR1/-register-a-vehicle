@@ -1,0 +1,21 @@
+POST http://localhost:3000/api/ruedas__frenos__suspension_y_dirección
+Content-Type: application/json
+
+{
+  "modelo_identico_de_neumáticos": 5,
+  "desgaste_del_neumático": 5,
+  "presión_adecuada_del_neumático": 5,
+  "llanta_sin_daños": 5,
+  "tuercas_de_seguridad": 5,
+  "espesor_de_la_pastilla_de_freno": 5,
+  "bielas": 5,
+  "rótulas": 5,
+  "tipo_de_neumático_correcto": 5,
+  "desgaste_homogeneo_de_neumáticos": 5,
+  "neumático_sin_daños":5,
+  "tornillos_y_llave_de_llanta":5,
+  "espesor_del_disco_de_freno":5,
+  "brazo_de_suspensión":5,
+  "manguetas":5,
+  "extremos_de_dirección":5
+}
