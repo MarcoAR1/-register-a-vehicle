@@ -1,19 +1,12 @@
 export type IDocument = {
   id?: number
-  modelo_identico_de_neumáticos: number
-  desgaste_del_neumático: number
-  presión_adecuada_del_neumático: number
-  llanta_sin_daños: number
-  tuercas_de_seguridad: number
-  espesor_de_la_pastilla_de_freno: number
-  bielas: number
-  rótulas: number
-  tipo_de_neumático_correcto: number
-  desgaste_homogeneo_de_neumáticos: number
-  neumático_sin_daños: number
-  tornillos_y_llave_de_llanta: number
-  espesor_del_disco_de_freno: number
-  brazo_de_suspensión: number
-  manguetas: number
-  extremos_de_dirección: number
+  cédula_verde__azul__título_del_automotor: number
+  vtv_vigente: number
+  segundo_juego_de_llaves: number
+  informe_de_dominio_histórico: number
+  escaneo_computarizado: number
+  verificación_policial_vigente: number
+  manual_de_usuario_con_servicios_registrados: number
+  funcionamiento_del_control_remoto: number
+  libre_de_deudas_financieras__multas_y_patentes: number
 }

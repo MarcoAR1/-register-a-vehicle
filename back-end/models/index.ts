@@ -1,6 +1,8 @@
 import { BaseModel } from './entities/BaseModel'
 import { Car } from './entities/Car'
+import { Document } from './entities/Document'
 import { General } from './entities/General'
+import { Wheels } from './entities/Wheels'
 
 export default class Models {
   public static async initModels(): Promise<void> {
@@ -11,6 +13,6 @@ export default class Models {
   }
 
   private static getModels(): typeof BaseModel[] {
-    return [Car, General]
+    return [Car, General, Document, Wheels]
   }
 }

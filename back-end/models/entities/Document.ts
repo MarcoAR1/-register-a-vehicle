@@ -10,22 +10,15 @@ export class Document extends BaseModel {
   public static tableName = DOCUMENTACIÓN_Y_MANTENIMIENTOS
   public static columnsProperties: { [key: string]: string } = {
     id: 'SERIAL NOT NULL PRIMARY KEY',
-    modelo_identico_de_neumáticos: 'INEGER(1) NOT NULL',
-    desgaste_del_neumático: 'INEGER(1) NOT NULL',
-    presión_adecuada_del_neumático: 'INEGER(1) NOT NULL',
-    llanta_sin_daños: 'INEGER(1) NOT NULL',
-    tuercas_de_seguridad: 'INEGER(1) NOT NULL',
-    espesor_de_la_pastilla_de_freno: 'INEGER(1) NOT NULL',
-    bielas: 'INEGER(1) NOT NULL',
-    rótulas: 'INEGER(1) NOT NULL',
-    tipo_de_neumático_correcto: 'INEGER(1) NOT NULL',
-    desgaste_homogeneo_de_neumáticos: 'INEGER(1) NOT NULL',
-    neumático_sin_daños: 'INEGER(1) NOT NULL',
-    tornillos_y_llave_de_llanta: 'INEGER(1) NOT NULL',
-    espesor_del_disco_de_freno: 'INEGER(1) NOT NULL',
-    brazo_de_suspensión: 'INEGER(1) NOT NULL',
-    manguetas: 'INEGER(1) NOT NULL',
-    extremos_de_dirección: 'INEGER(1) NOT NULL',
+    cédula_verde__azul__título_del_automotor: 'INTEGER NOT NULL',
+    vtv_vigente: 'INTEGER NOT NULL',
+    segundo_juego_de_llaves: 'INTEGER NOT NULL',
+    informe_de_dominio_histórico: 'INTEGER NOT NULL',
+    escaneo_computarizado: 'INTEGER NOT NULL',
+    verificación_policial_vigente: 'INTEGER NOT NULL',
+    manual_de_usuario_con_servicios_registrados: 'INTEGER NOT NULL',
+    funcionamiento_del_control_remoto: 'INTEGER NOT NULL',
+    libre_de_deudas_financieras__multas_y_patentes: 'INTEGER NOT NULL',
   }
 
   constructor() {

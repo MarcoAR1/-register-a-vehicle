@@ -5,14 +5,20 @@ import {
   STATIC_PUBLIC_PATH,
   CARS,
   GENERALS,
+  DOCUMENTACIÓN_Y_MANTENIMIENTOS,
 } from '../constants/constants'
 import { CarsRouter } from './CarsRouter'
+import { DocumentsRouter } from './DocumentsRouter'
 import { GeneralsRouter } from './GeneralsRouter'
 
 export class Router {
   public static initializeRoutes(app: express.Express): void {
     app.use(BASE_URL_API + CARS, new CarsRouter().router)
     app.use(BASE_URL_API + GENERALS, new GeneralsRouter().router)
+    app.use(
+      BASE_URL_API + DOCUMENTACIÓN_Y_MANTENIMIENTOS,
+      new DocumentsRouter().router
+    )
     app.use(express.static(path.join(__dirname, STATIC_PUBLIC_PATH)))
   }
 }

@@ -10,5 +10,5 @@ Content-Type: application/json
   "verificación_policial_vigente": 5,
   "manual_de_usuario_con_servicios_registrados": 5,
   "funcionamiento_del_control_remoto": 5,
-  "libre_de_deudas_financieras__multas_y_patentes": 5,
+  "libre_de_deudas_financieras__multas_y_patentes": 5
 }

@@ -23,7 +23,7 @@ export default class DATABASE {
   public static async initDatabase(): Promise<void> {
     if (NODE_ENV !== DEVELOPMENTMODE) {
       await Models.initModels()
-      console.log('finish to init models')
+      console.log('all tables created')
     }
   }
 }
