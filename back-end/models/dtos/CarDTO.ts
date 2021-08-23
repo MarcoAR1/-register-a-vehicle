@@ -2,8 +2,8 @@ import { ICar } from '../interface/ICar'
 export class CarDTO {
   id?: number
   general: number
-  documentacion_y_mantenimiento: number
-  ruedas__frenos__suspension_y_direccion: number
+  documentación_y_mantenimiento: number
+  ruedas__frenos__suspension_y_dirección: number
   carrocería: number
   motor: number
   alumbrado: number
@@ -14,9 +14,9 @@ export class CarDTO {
   constructor(car: ICar) {
     car.id && (this.id = car.id)
     this.general = car.general
-    this.documentacion_y_mantenimiento = car.documentacion_y_mantenimiento
-    this.ruedas__frenos__suspension_y_direccion =
-      car.ruedas__frenos__suspension_y_direccion
+    this.documentación_y_mantenimiento = car.documentación_y_mantenimiento
+    this.ruedas__frenos__suspension_y_dirección =
+      car.ruedas__frenos__suspension_y_dirección
     this.carrocería = car.carrocería
     this.motor = car.motor
     this.alumbrado = car.alumbrado

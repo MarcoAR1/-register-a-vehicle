@@ -1,8 +1,8 @@
 export type ICar = {
   id?: number
   general: number
-  documentacion_y_mantenimiento: number
-  ruedas__frenos__suspension_y_direccion: number
+  documentación_y_mantenimiento: number
+  ruedas__frenos__suspension_y_dirección: number
   carrocería: number
   motor: number
   alumbrado: number

@@ -2,11 +2,10 @@ import { GeneralDTO } from '../dtos/GeneralDTO'
 import { BaseModel } from './BaseModel'
 import { PgType } from '../../db'
 import { IGeneral } from '../interface/IGeneral'
-import { NotFoundError } from '../../errors/NotFoundError'
-import { DatabaseError } from '../../errors/DatabaseError'
 import { GENERALS } from '../../constants/constants'
 export class General extends BaseModel {
   public DB: PgType
+  public tableName: string
   public static tableName = GENERALS
   public static columnsProperties: { [key: string]: string } = {
     id: 'SERIAL NOT NULL PRIMARY KEY',
@@ -22,6 +21,7 @@ export class General extends BaseModel {
   constructor() {
     super()
     this.DB = BaseModel.DB()
+    this.tableName = General.tableName
   }
 
   public static async initModel(): Promise<void> {
@@ -29,38 +29,22 @@ export class General extends BaseModel {
   }
 
   public async create(data: IGeneral): Promise<GeneralDTO> {
-    const res = (
-      await this.DB.query(
-        'INSERT INTO Generals(${this:name}) VALUES (${this:csv}) RETURNING *',
-        data
-      )
-    )[0]
-    if (!res) throw new DatabaseError('it not posible save this General')
+    const res = await this.save(data, this.tableName)
     return new GeneralDTO(res)
   }
 
   public async getAll(): Promise<GeneralDTO[]> {
-    const res: IGeneral[] = await this.DB.query(`SELECT * FROM Generals`)
+    const res: IGeneral[] = await this.findAll({ tableName: this.tableName })
     return res.map((e) => new GeneralDTO(e))
   }
 
   public async getById(id: number): Promise<GeneralDTO> {
-    const res = (
-      await this.DB.query(`SELECT * FROM Generals WHERE id = $1`, [id])
-    )[0]
-    if (!res) throw new NotFoundError('Generald not found with provider id')
+    const res = await this.findOne({ id }, this.tableName)
     return new GeneralDTO(res)
   }
 
-  public async update(id: number, data: GeneralDTO): Promise<GeneralDTO> {
-    const res = (
-      await this.DB.query(
-        `UPDATE Generals SET ($2:name) = ($2:csv) WHERE id = $1 RETURNING *`,
-        [id, data]
-      )
-    )[0]
-    if (!res) throw new NotFoundError('Generald not found with provider id')
-
+  public async update(id: number, data: IGeneral): Promise<GeneralDTO> {
+    const res = await this.saveChange({ id, data, tableName: this.tableName })
     return new GeneralDTO(res)
   }
 }

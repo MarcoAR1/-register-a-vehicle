@@ -3,8 +3,8 @@ Content-Type: application/json
 
 {
   "general": 0,
-  "documentacion_y_mantenimiento": 0,
-  "ruedas__frenos__suspension_y_direccion": 0,
+  "documentación_y_mantenimiento": 0,
+  "ruedas__frenos__suspension_y_dirección": 0,
   "carrocería": 0,
   "motor": 0,
   "alumbrado": 0,

@@ -1,0 +1,14 @@
+POST http://localhost:3000/api/documentacion_y_mantenimientos
+Content-Type: application/json
+
+{
+  "cédula_verde__azul__título_del_automotor": 5,
+  "vtv_vigente": 5,
+  "segundo_juego_de_llaves": 5,
+  "informe_de_dominio_histórico": 5,
+  "escaneo_computarizado": 5,
+  "verificación_policial_vigente": 5,
+  "manual_de_usuario_con_servicios_registrados": 5,
+  "funcionamiento_del_control_remoto": 5,
+  "libre_de_deudas_financieras__multas_y_patentes": 5,
+}
