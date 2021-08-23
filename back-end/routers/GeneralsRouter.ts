@@ -15,13 +15,12 @@ export class GeneralsRouter extends BaseRouter {
   private async createGeneral(req: express.Request, res: express.Response) {
     const general = new GeneralDTO(req.body)
     const response = await this.GeneralsMannager.createGeneral(general)
-
     res.status(200).json(response)
   }
 
   private async getGenerals(req: express.Request, res: express.Response) {
-    const general = await this.GeneralsMannager.getAllGenerals()
-    res.status(200).json(general)
+    const response = await this.GeneralsMannager.getAllGenerals()
+    res.status(200).json(response)
   }
 
   private async updateGeneral(req: express.Request, res: express.Response) {
@@ -31,8 +30,8 @@ export class GeneralsRouter extends BaseRouter {
         message: 'El id debe ser un numero',
       })
     }
-    const general = await this.GeneralsMannager.updateGeneral(+id, req.body)
-    res.status(200).json(general)
+    const response = await this.GeneralsMannager.updateGeneral(+id, req.body)
+    res.status(200).json(response)
   }
 
   private async getGeneralById(req: express.Request, res: express.Response) {
@@ -42,8 +41,8 @@ export class GeneralsRouter extends BaseRouter {
         message: 'El id debe ser un numero',
       })
     }
-    const general = await this.GeneralsMannager.getGeneralById(+id)
-    res.status(200).json(general)
+    const response = await this.GeneralsMannager.getGeneralById(+id)
+    res.status(200).json(response)
   }
 
   private buildRoutes() {

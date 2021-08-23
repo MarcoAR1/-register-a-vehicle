@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/ruedas__frenos__suspension_y_dirección
+POST http://localhost:3000/api/ruedas__frenos__suspension_y_direccion
 Content-Type: application/json
 
 {

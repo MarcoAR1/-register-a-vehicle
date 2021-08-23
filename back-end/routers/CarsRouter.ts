@@ -19,8 +19,8 @@ export class CarsRouter extends BaseRouter {
   }
 
   private async getCars(req: express.Request, res: express.Response) {
-    const cars = await this.CarsMannager.getAllCars()
-    res.status(200).json(cars)
+    const response = await this.CarsMannager.getAllCars()
+    res.status(200).json(response)
   }
 
   private async updateCar(req: express.Request, res: express.Response) {
@@ -30,8 +30,8 @@ export class CarsRouter extends BaseRouter {
         message: 'El id debe ser un numero',
       })
     }
-    const car = await this.CarsMannager.updateCar(+id, req.body)
-    res.status(200).json(car)
+    const response = await this.CarsMannager.updateCar(+id, req.body)
+    res.status(200).json(response)
   }
 
   private async getCarById(req: express.Request, res: express.Response) {
@@ -41,8 +41,8 @@ export class CarsRouter extends BaseRouter {
         message: 'El id debe ser un numero',
       })
     }
-    const car = await this.CarsMannager.getCarById(+id)
-    res.status(200).json(car)
+    const response = await this.CarsMannager.getCarById(+id)
+    res.status(200).json(response)
   }
 
   private buildRoutes() {
