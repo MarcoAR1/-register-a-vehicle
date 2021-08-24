@@ -3,6 +3,7 @@ import { Bodywork } from './entities/Bodywork'
 import { Car } from './entities/Car'
 import { Document } from './entities/Document'
 import { General } from './entities/General'
+import { Motor } from './entities/Motor'
 import { Wheels } from './entities/Wheels'
 
 export default class Models {
@@ -14,6 +15,6 @@ export default class Models {
   }
 
   private static getModels(): typeof BaseModel[] {
-    return [Car, General, Document, Wheels, Bodywork]
+    return [Car, General, Document, Wheels, Bodywork, Motor]
   }
 }

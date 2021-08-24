@@ -1,0 +1,21 @@
+POST http://localhost:3000/api/motor
+Content-Type: application/json
+
+{
+  "estado_aparente_del_motor": 5,
+  "estado_del_aceite": 5,
+  "nivel_del_liquido_de_frenos": 5,
+  "nivel_del_liquido_de_dirección_hidráulica": 5,
+  "cadena_o_correa_de_distribución": 5,
+  "ruidos_y_vibraciones_anómalas_0_motor_frio": 5,
+  "circuito_de_transmision": 5,
+  "circuito_de_frenos": 5,
+  "nivel_de_aceite": 5,
+  "nivel_y_estado_del_liquido_refrigerante": 5,
+  "estado_del_liquido_de_frenos":5,
+  "nivel_del_liquido_de_limpia_parabrisas":5,
+  "correa_de_elementos_axuliares___alternador_1_ventilador_1_aa___":5,
+  "circuito_de_lubricación":5,
+  "circuito_del_refrigerante":5,
+  "circuito_del_combustible":5
+}

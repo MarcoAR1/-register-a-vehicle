@@ -16,8 +16,8 @@
     "copy": "cp -r back-end/dist . && cp -r front-end/dist dist/ ",
     "dev:back": "npm run dev --workspace=back-end",
     "dev:front": "npm run dev --workspace=front-end",
-    "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx",
-    "fix": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix"
+    "test": "npm run test --workspaces",
+    "lint": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix"
   },
   "repository": {
     "type": "git",

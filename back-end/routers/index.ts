@@ -8,11 +8,13 @@ import {
   DOCUMENTACIÓN_Y_MANTENIMIENTOS,
   WHEELS,
   BODYWORK,
+  MOTOR,
 } from '../constants/constants'
 import { BodyworksRouter } from './BodyworksRouter'
 import { CarsRouter } from './CarsRouter'
 import { DocumentsRouter } from './DocumentsRouter'
 import { GeneralsRouter } from './GeneralsRouter'
+import { MotorsRouter } from './MotorsRouter'
 import { WheelsRouter } from './WheelsRouter'
 
 export class Router {
@@ -25,6 +27,7 @@ export class Router {
     )
     app.use(BASE_URL_API + WHEELS, new WheelsRouter().router)
     app.use(BASE_URL_API + BODYWORK, new BodyworksRouter().router)
+    app.use(BASE_URL_API + MOTOR, new MotorsRouter().router)
     app.use(express.static(path.join(__dirname, STATIC_PUBLIC_PATH)))
   }
 }
