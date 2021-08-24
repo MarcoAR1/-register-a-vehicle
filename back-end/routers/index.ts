@@ -7,7 +7,9 @@ import {
   GENERALS,
   DOCUMENTACIÓN_Y_MANTENIMIENTOS,
   WHEELS,
+  BODYWORK,
 } from '../constants/constants'
+import { BodyworksRouter } from './BodyworksRouter'
 import { CarsRouter } from './CarsRouter'
 import { DocumentsRouter } from './DocumentsRouter'
 import { GeneralsRouter } from './GeneralsRouter'
@@ -22,6 +24,7 @@ export class Router {
       new DocumentsRouter().router
     )
     app.use(BASE_URL_API + WHEELS, new WheelsRouter().router)
+    app.use(BASE_URL_API + BODYWORK, new BodyworksRouter().router)
     app.use(express.static(path.join(__dirname, STATIC_PUBLIC_PATH)))
   }
 }

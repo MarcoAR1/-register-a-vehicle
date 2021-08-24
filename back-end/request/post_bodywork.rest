@@ -1,0 +1,21 @@
+POST http://localhost:3000/api/carroceria
+Content-Type: application/json
+
+{
+  "bajos_del_paragolpe_delantero": 5,
+  "capó": 5,
+  "guardabarro_delantero_derecho": 5,
+  "espejo_retrovisor_izquierdo": 5,
+  "panel_exterior___puerta_delantera_izquierda___": 5,
+  "bisagra___puerta_delantera_izquierda___": 5,
+  "manija_exterior___puerta_delantera_derecha___": 5,
+  "parabrisas_delantero": 5,
+  "paragolpe_delantero": 5,
+  "guardabarro_delantero_izquierdo": 5,
+  "parabrisas":5,
+  "espejo_retrovisor_derecho":5,
+  "manija___puerta_delantera_izquierda___":5,
+  "panel_exterior___puerta_delantera_derecha___":5,
+  "bisagra___puerta_delantera_derecha___":5,
+  "talonera_izquierda":5
+}

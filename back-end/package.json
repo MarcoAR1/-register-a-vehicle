@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && cross-env NODE_ENV=production npm run serve",
+    "start": "npm run build && cross-env NODE_ENV=production node ./dist/index.js",
     "build": "tsc",
-    "dev": "cross-env NODE_ENV=development npm run serve",
-    "serve": "tsc-watch --outDir ./dist --onSuccess \"node ./dist/index.js\"",
+    "dev": "cross-env NODE_ENV=development ts-node-dev ./index.ts",
     "test": "cross-env NODE_ENV=test jest"
   },
   "author": "",
