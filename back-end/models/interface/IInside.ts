@@ -4,4 +4,5 @@ export type IInside = {
   asiento_acompañante: number
   techo: number
   maletero: number
+  car_id: number
 }

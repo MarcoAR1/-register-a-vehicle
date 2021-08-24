@@ -1,4 +1,3 @@
-import { IBodywork } from '../models/interface/IBodywork'
 import Bodywork from '../models/entities/Bodywork'
 import { BodyworkDTO } from 'models/dtos/BodyworkDTO'
 
@@ -8,7 +7,7 @@ export class BodyworksMannager {
     this.querys = new Bodywork()
   }
 
-  async createBodywork(data: IBodywork): Promise<BodyworkDTO> {
+  async createBodywork(data: BodyworkDTO): Promise<BodyworkDTO> {
     return this.querys.create(data)
   }
 
@@ -20,7 +19,7 @@ export class BodyworksMannager {
     return this.querys.getById(id)
   }
 
-  async updateBodywork(id: number, data: IBodywork): Promise<BodyworkDTO> {
+  async updateBodywork(id: number, data: BodyworkDTO): Promise<BodyworkDTO> {
     return this.querys.update(id, data)
   }
 }

@@ -16,4 +16,5 @@ export type IBodywork = {
   panel_exterior___puerta_delantera_derecha___: number
   bisagra___puerta_delantera_derecha___: number
   talonera_izquierda: number
+  car_id: number
 }

@@ -16,4 +16,5 @@ export type IWheels = {
   brazo_de_suspensión: number
   manguetas: number
   extremos_de_dirección: number
+  car_id: number
 }

@@ -3,7 +3,7 @@ import { BaseRouter } from './BaseRouter'
 import * as express from 'express'
 import { WheelsMannager } from '../mannagers/WheelsMannager'
 import { WheelsDTO } from '../models/dtos/WheelsDTO'
-import { VerifyProps } from './middleware/VerifyProps'
+import { checkIdIsANumber, checkProps } from './middleware/VerifyProps'
 import { columnsProperties } from '../models/entities/Wheels'
 
 export class WheelsRouter extends BaseRouter {
@@ -40,18 +40,18 @@ export class WheelsRouter extends BaseRouter {
   private buildRoutes() {
     this.router.post(
       PATH_INICIAL,
-      VerifyProps.checkProps(Object.keys(columnsProperties)),
+      checkProps(Object.keys(columnsProperties)),
       this.createWheels.bind(this)
     )
     this.router.put(
       PARAM_PATH_ID,
-      VerifyProps.checkIdIsANumber,
+      checkIdIsANumber,
       this.updateWheels.bind(this)
     )
     this.router.get(PATH_INICIAL, this.getWheels.bind(this))
     this.router.get(
       PARAM_PATH_ID,
-      VerifyProps.checkIdIsANumber,
+      checkIdIsANumber,
       this.getWheelsById.bind(this)
     )
   }

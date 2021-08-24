@@ -17,5 +17,6 @@ Content-Type: application/json
   "manija___puerta_delantera_izquierda___":5,
   "panel_exterior___puerta_delantera_derecha___":5,
   "bisagra___puerta_delantera_derecha___":5,
-  "talonera_izquierda":5
+  "talonera_izquierda":5,
+  "car_id":1
 }

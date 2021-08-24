@@ -3,7 +3,7 @@ import { BaseRouter } from './BaseRouter'
 import * as express from 'express'
 import { InsidesMannager } from '../mannagers/InsidesMannager'
 import { InsideDTO } from '../models/dtos/InsideDTO'
-import { VerifyProps } from './middleware/VerifyProps'
+import { checkIdIsANumber,checkProps } from './middleware/VerifyProps'
 import { columnsProperties } from '../models/entities/Inside'
 
 export class InsidesRouter extends BaseRouter {
@@ -40,18 +40,18 @@ export class InsidesRouter extends BaseRouter {
   private buildRoutes() {
     this.router.post(
       PATH_INICIAL,
-      VerifyProps.checkProps(Object.keys(columnsProperties)),
+      checkProps(Object.keys(columnsProperties)),
       this.createInside.bind(this)
     )
     this.router.put(
       PARAM_PATH_ID,
-      VerifyProps.checkIdIsANumber,
+      checkIdIsANumber,
       this.updateInside.bind(this)
     )
     this.router.get(PATH_INICIAL, this.getInside.bind(this))
     this.router.get(
       PARAM_PATH_ID,
-      VerifyProps.checkIdIsANumber,
+      checkIdIsANumber,
       this.getInsideById.bind(this)
     )
   }

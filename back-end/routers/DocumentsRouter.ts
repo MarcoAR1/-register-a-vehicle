@@ -3,7 +3,7 @@ import { BaseRouter } from './BaseRouter'
 import * as express from 'express'
 import { DocumentsMannager } from '../mannagers/DocumentsMannager'
 import { DocumentDTO } from '../models/dtos/DocumentDTO'
-import { VerifyProps } from './middleware/VerifyProps'
+import { checkIdIsANumber, checkProps } from './middleware/VerifyProps'
 import { columnsProperties } from '../models/entities/Document'
 export class DocumentsRouter extends BaseRouter {
   private DocumentsMannager: DocumentsMannager
@@ -40,18 +40,18 @@ export class DocumentsRouter extends BaseRouter {
   private buildRoutes() {
     this.router.post(
       PATH_INICIAL,
-      VerifyProps.checkProps(Object.keys(columnsProperties)),
+      checkProps(Object.keys(columnsProperties)),
       this.createDocument.bind(this)
     )
     this.router.put(
       PARAM_PATH_ID,
-      VerifyProps.checkIdIsANumber,
+      checkIdIsANumber,
       this.updateDocument.bind(this)
     )
     this.router.get(PATH_INICIAL, this.getDocuments.bind(this))
     this.router.get(
       PARAM_PATH_ID,
-      VerifyProps.checkIdIsANumber,
+      checkIdIsANumber,
       this.getDocumentById.bind(this)
     )
   }

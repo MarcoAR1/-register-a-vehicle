@@ -30,7 +30,7 @@ export abstract class BaseModel {
   }
 
   protected async save(
-    data: { [key: string]: string | number | boolean },
+    data: unknown,
     tableName: string
     // eslint-disable-next-line
   ): Promise<any> {
@@ -89,7 +89,7 @@ export abstract class BaseModel {
     id,
     tableName,
   }: {
-    data: { [index: string]: string | number | boolean }
+    data
     id: number
     tableName: string
     // eslint-disable-next-line

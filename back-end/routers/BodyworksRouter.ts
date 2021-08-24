@@ -3,7 +3,7 @@ import { BaseRouter } from './BaseRouter'
 import * as express from 'express'
 import { BodyworksMannager } from '../mannagers/BodyworksMannager'
 import { BodyworkDTO } from '../models/dtos/BodyworkDTO'
-import { VerifyProps } from './middleware/VerifyProps'
+import { checkIdIsANumber, checkProps } from './middleware/VerifyProps'
 import { columnsProperties } from '../models/entities/Bodywork'
 
 export class BodyworksRouter extends BaseRouter {
@@ -40,18 +40,18 @@ export class BodyworksRouter extends BaseRouter {
   private buildRoutes() {
     this.router.post(
       PATH_INICIAL,
-      VerifyProps.checkProps(Object.keys(columnsProperties)),
+      checkProps(Object.keys(columnsProperties)),
       this.createBodywork.bind(this)
     )
     this.router.put(
       PARAM_PATH_ID,
-      VerifyProps.checkIdIsANumber,
+      checkIdIsANumber,
       this.updateBodywork.bind(this)
     )
     this.router.get(PATH_INICIAL, this.getBodywork.bind(this))
     this.router.get(
       PARAM_PATH_ID,
-      VerifyProps.checkIdIsANumber,
+      checkIdIsANumber,
       this.getBodyworkById.bind(this)
     )
   }

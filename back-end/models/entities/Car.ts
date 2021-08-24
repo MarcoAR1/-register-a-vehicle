@@ -14,6 +14,13 @@ export default class Car extends BaseModel {
     km: 'VARCHAR(255) NOT NULL',
     precio: 'VARCHAR(255) NOT NULL',
     image: 'TEXT NOT NULL',
+    marca: 'VARCHAR(50) NOT NULL',
+    modelo: 'VARCHAR(50) NOT NULL',
+    generación: 'VARCHAR(50) NOT NULL',
+    motor: 'VARCHAR(50) NOT NULL',
+    tipo_de_carrocería: 'VARCHAR(50) NOT NULL',
+    numero_de_puertas: 'VARCHAR(50) NOT NULL',
+    numero_de_plazas: 'VARCHAR(50) NOT NULL',
   }
 
   constructor() {

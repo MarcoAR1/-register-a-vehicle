@@ -1,4 +1,3 @@
-import { IMotor } from '../models/interface/IMotor'
 import Motor from '../models/entities/Motor'
 import { MotorDTO } from 'models/dtos/MotorDTO'
 
@@ -8,7 +7,7 @@ export class MotorsMannager {
     this.querys = new Motor()
   }
 
-  async createMotor(data: IMotor): Promise<MotorDTO> {
+  async createMotor(data: MotorDTO): Promise<MotorDTO> {
     return this.querys.create(data)
   }
 
@@ -20,7 +19,7 @@ export class MotorsMannager {
     return this.querys.getById(id)
   }
 
-  async updateMotor(id: number, data: IMotor): Promise<MotorDTO> {
+  async updateMotor(id: number, data: MotorDTO): Promise<MotorDTO> {
     return this.querys.update(id, data)
   }
 }

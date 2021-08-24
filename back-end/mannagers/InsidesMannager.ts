@@ -1,4 +1,3 @@
-import { IInside } from '../models/interface/IInside'
 import Inside from '../models/entities/Inside'
 import { InsideDTO } from 'models/dtos/InsideDTO'
 
@@ -8,7 +7,7 @@ export class InsidesMannager {
     this.querys = new Inside()
   }
 
-  async createInside(data: IInside): Promise<InsideDTO> {
+  async createInside(data: InsideDTO): Promise<InsideDTO> {
     return this.querys.create(data)
   }
 
@@ -20,7 +19,7 @@ export class InsidesMannager {
     return this.querys.getById(id)
   }
 
-  async updateInside(id: number, data: IInside): Promise<InsideDTO> {
+  async updateInside(id: number, data: InsideDTO): Promise<InsideDTO> {
     return this.querys.update(id, data)
   }
 }

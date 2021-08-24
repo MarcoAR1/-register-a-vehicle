@@ -10,23 +10,24 @@ export default class Motor extends BaseModel {
   public static tableName = MOTOR
   public static columnsProperties: { [key: string]: string } = {
     id: 'SERIAL NOT NULL PRIMARY KEY',
-    estado_aparente_del_motor: 'INTEGER NOT NULL',
-    estado_del_aceite: 'INTEGER NOT NULL',
-    nivel_del_liquido_de_frenos: 'INTEGER NOT NULL',
-    nivel_del_liquido_de_dirección_hidráulica: 'INTEGER NOT NULL',
-    cadena_o_correa_de_distribución: 'INTEGER NOT NULL',
-    ruidos_y_vibraciones_anómalas_0_motor_frio: 'INTEGER NOT NULL',
-    circuito_de_transmision: 'INTEGER NOT NULL',
-    circuito_de_frenos: 'INTEGER NOT NULL',
-    nivel_de_aceite: 'INTEGER NOT NULL',
-    nivel_y_estado_del_liquido_refrigerante: 'INTEGER NOT NULL',
-    estado_del_liquido_de_frenos: 'INTEGER NOT NULL',
-    nivel_del_liquido_de_limpia_parabrisas: 'INTEGER NOT NULL',
+    estado_aparente_del_motor: 'INTEGER DEFAULT 0',
+    estado_del_aceite: 'INTEGER DEFAULT 0',
+    nivel_del_liquido_de_frenos: 'INTEGER DEFAULT 0',
+    nivel_del_liquido_de_dirección_hidráulica: 'INTEGER DEFAULT 0',
+    cadena_o_correa_de_distribución: 'INTEGER DEFAULT 0',
+    ruidos_y_vibraciones_anómalas_0_motor_frio: 'INTEGER DEFAULT 0',
+    circuito_de_transmision: 'INTEGER DEFAULT 0',
+    circuito_de_frenos: 'INTEGER DEFAULT 0',
+    nivel_de_aceite: 'INTEGER DEFAULT 0',
+    nivel_y_estado_del_liquido_refrigerante: 'INTEGER DEFAULT 0',
+    estado_del_liquido_de_frenos: 'INTEGER DEFAULT 0',
+    nivel_del_liquido_de_limpia_parabrisas: 'INTEGER DEFAULT 0',
     correa_de_elementos_axuliares___alternador_1_ventilador_1_aa___:
-      'INTEGER NOT NULL',
-    circuito_de_lubricación: 'INTEGER NOT NULL',
-    circuito_del_refrigerante: 'INTEGER NOT NULL',
-    circuito_del_combustible: 'INTEGER NOT NULL',
+      'INTEGER DEFAULT 0',
+    circuito_de_lubricación: 'INTEGER DEFAULT 0',
+    circuito_del_refrigerante: 'INTEGER DEFAULT 0',
+    circuito_del_combustible: 'INTEGER DEFAULT 0',
+    car_id: 'INTEGER REFERENCES car(id) ON DELETE CASCADE UNIQUE',
   }
 
   constructor() {
@@ -39,7 +40,7 @@ export default class Motor extends BaseModel {
     await this.getQueryCreateTable(this.columnsProperties, this.tableName)
   }
 
-  public async create(data: IMotor): Promise<MotorDTO> {
+  public async create(data: MotorDTO): Promise<MotorDTO> {
     const res = await this.save(data, this.tableName)
     return new MotorDTO(res)
   }
@@ -56,7 +57,7 @@ export default class Motor extends BaseModel {
     return new MotorDTO(res)
   }
 
-  public async update(id: number, data: IMotor): Promise<MotorDTO> {
+  public async update(id: number, data: MotorDTO): Promise<MotorDTO> {
     const res = await this.saveChange({ id, data, tableName: this.tableName })
     return new MotorDTO(res)
   }

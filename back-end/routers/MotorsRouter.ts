@@ -3,7 +3,7 @@ import { BaseRouter } from './BaseRouter'
 import * as express from 'express'
 import { MotorsMannager } from '../mannagers/MotorsMannager'
 import { MotorDTO } from '../models/dtos/MotorDTO'
-import { VerifyProps } from './middleware/VerifyProps'
+import { checkIdIsANumber, checkProps } from './middleware/VerifyProps'
 import { columnsProperties } from '../models/entities/Motor'
 
 export class MotorsRouter extends BaseRouter {
@@ -40,18 +40,18 @@ export class MotorsRouter extends BaseRouter {
   private buildRoutes() {
     this.router.post(
       PATH_INICIAL,
-      VerifyProps.checkProps(Object.keys(columnsProperties)),
+      checkProps(Object.keys(columnsProperties)),
       this.createMotor.bind(this)
     )
     this.router.put(
       PARAM_PATH_ID,
-      VerifyProps.checkIdIsANumber,
+      checkIdIsANumber,
       this.updateMotor.bind(this)
     )
     this.router.get(PATH_INICIAL, this.getMotor.bind(this))
     this.router.get(
       PARAM_PATH_ID,
-      VerifyProps.checkIdIsANumber,
+      checkIdIsANumber,
       this.getMotorById.bind(this)
     )
   }

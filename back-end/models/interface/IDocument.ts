@@ -9,4 +9,5 @@ export type IDocument = {
   manual_de_usuario_con_servicios_registrados: number
   funcionamiento_del_control_remoto: number
   libre_de_deudas_financieras__multas_y_patentes: number
+  car_id: number
 }

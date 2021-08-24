@@ -1,4 +1,3 @@
-import { ICar } from '../models/interface/ICar'
 import Car from '../models/entities/Car'
 import { CarDTO } from 'models/dtos/CarDTO'
 
@@ -8,7 +7,7 @@ export class CarsMannager {
     this.querys = new Car()
   }
 
-  async createCar(car: ICar): Promise<CarDTO> {
+  async createCar(car: CarDTO): Promise<CarDTO> {
     return this.querys.create(car)
   }
 
@@ -20,7 +19,7 @@ export class CarsMannager {
     return this.querys.getById(id)
   }
 
-  async updateCar(id: number, car: ICar): Promise<CarDTO> {
+  async updateCar(id: number, car: CarDTO): Promise<CarDTO> {
     return this.querys.update(id, car)
   }
 }

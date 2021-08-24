@@ -10,22 +10,23 @@ export default class Bodywork extends BaseModel {
   public static tableName = BODYWORK
   public static columnsProperties: { [key: string]: string } = {
     id: 'SERIAL NOT NULL PRIMARY KEY',
-    bajos_del_paragolpe_delantero: 'INTEGER NOT NULL',
-    capó: 'INTEGER NOT NULL',
-    guardabarro_delantero_derecho: 'INTEGER NOT NULL',
-    espejo_retrovisor_izquierdo: 'INTEGER NOT NULL',
-    panel_exterior___puerta_delantera_izquierda___: 'INTEGER NOT NULL',
-    bisagra___puerta_delantera_izquierda___: 'INTEGER NOT NULL',
-    manija_exterior___puerta_delantera_derecha___: 'INTEGER NOT NULL',
-    parabrisas_delantero: 'INTEGER NOT NULL',
-    paragolpe_delantero: 'INTEGER NOT NULL',
-    guardabarro_delantero_izquierdo: 'INTEGER NOT NULL',
-    parabrisas: 'INTEGER NOT NULL',
-    espejo_retrovisor_derecho: 'INTEGER NOT NULL',
-    manija___puerta_delantera_izquierda___: 'INTEGER NOT NULL',
-    panel_exterior___puerta_delantera_derecha___: 'INTEGER NOT NULL',
-    bisagra___puerta_delantera_derecha___: 'INTEGER NOT NULL',
-    talonera_izquierda: 'INTEGER NOT NULL',
+    bajos_del_paragolpe_delantero: 'INTEGER DEFAULT 0',
+    capó: 'INTEGER DEFAULT 0',
+    guardabarro_delantero_derecho: 'INTEGER DEFAULT 0',
+    espejo_retrovisor_izquierdo: 'INTEGER DEFAULT 0',
+    panel_exterior___puerta_delantera_izquierda___: 'INTEGER DEFAULT 0',
+    bisagra___puerta_delantera_izquierda___: 'INTEGER DEFAULT 0',
+    manija_exterior___puerta_delantera_derecha___: 'INTEGER DEFAULT 0',
+    parabrisas_delantero: 'INTEGER DEFAULT 0',
+    paragolpe_delantero: 'INTEGER DEFAULT 0',
+    guardabarro_delantero_izquierdo: 'INTEGER DEFAULT 0',
+    parabrisas: 'INTEGER DEFAULT 0',
+    espejo_retrovisor_derecho: 'INTEGER DEFAULT 0',
+    manija___puerta_delantera_izquierda___: 'INTEGER DEFAULT 0',
+    panel_exterior___puerta_delantera_derecha___: 'INTEGER DEFAULT 0',
+    bisagra___puerta_delantera_derecha___: 'INTEGER DEFAULT 0',
+    talonera_izquierda: 'INTEGER DEFAULT 0',
+    car_id: 'INTEGER REFERENCES car(id) ON DELETE CASCADE UNIQUE',
   }
 
   constructor() {
@@ -38,7 +39,7 @@ export default class Bodywork extends BaseModel {
     await this.getQueryCreateTable(this.columnsProperties, this.tableName)
   }
 
-  public async create(data: IBodywork): Promise<BodyworkDTO> {
+  public async create(data: BodyworkDTO): Promise<BodyworkDTO> {
     const res = await this.save(data, this.tableName)
     return new BodyworkDTO(res)
   }
@@ -55,7 +56,7 @@ export default class Bodywork extends BaseModel {
     return new BodyworkDTO(res)
   }
 
-  public async update(id: number, data: IBodywork): Promise<BodyworkDTO> {
+  public async update(id: number, data: BodyworkDTO): Promise<BodyworkDTO> {
     const res = await this.saveChange({ id, data, tableName: this.tableName })
     return new BodyworkDTO(res)
   }

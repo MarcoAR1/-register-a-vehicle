@@ -10,10 +10,11 @@ export default class Inside extends BaseModel {
   public static tableName = INSIDE
   public static columnsProperties: { [key: string]: string } = {
     id: 'SERIAL NOT NULL PRIMARY KEY',
-    asiento_conductor: 'INTEGER NOT NULL',
-    asiento_acompañante: 'INTEGER NOT NULL',
-    techo: 'INTEGER NOT NULL',
-    maletero: 'INTEGER NOT NULL',
+    asiento_conductor: 'INTEGER DEFAULT 0',
+    asiento_acompañante: 'INTEGER DEFAULT 0',
+    techo: 'INTEGER DEFAULT 0',
+    maletero: 'INTEGER DEFAULT 0',
+    car_id: 'INTEGER REFERENCES car(id) ON DELETE CASCADE UNIQUE',
   }
 
   constructor() {
@@ -26,7 +27,7 @@ export default class Inside extends BaseModel {
     await this.getQueryCreateTable(this.columnsProperties, this.tableName)
   }
 
-  public async create(data: IInside): Promise<InsideDTO> {
+  public async create(data: InsideDTO): Promise<InsideDTO> {
     const res = await this.save(data, this.tableName)
     return new InsideDTO(res)
   }
@@ -43,7 +44,7 @@ export default class Inside extends BaseModel {
     return new InsideDTO(res)
   }
 
-  public async update(id: number, data: IInside): Promise<InsideDTO> {
+  public async update(id: number, data: InsideDTO): Promise<InsideDTO> {
     const res = await this.saveChange({ id, data, tableName: this.tableName })
     return new InsideDTO(res)
   }

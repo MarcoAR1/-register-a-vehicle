@@ -4,7 +4,6 @@ import {
   BASE_URL_API,
   STATIC_PUBLIC_PATH,
   CARS,
-  GENERALS,
   DOCUMENTACIÓN_Y_MANTENIMIENTOS,
   WHEELS,
   BODYWORK,
@@ -14,7 +13,6 @@ import {
 import { BodyworksRouter } from './BodyworksRouter'
 import { CarsRouter } from './CarsRouter'
 import { DocumentsRouter } from './DocumentsRouter'
-import { GeneralsRouter } from './GeneralsRouter'
 import { InsidesRouter } from './InsideRouter'
 import { MotorsRouter } from './MotorsRouter'
 import { WheelsRouter } from './WheelsRouter'
@@ -22,7 +20,6 @@ import { WheelsRouter } from './WheelsRouter'
 export class Router {
   public static initializeRoutes(app: express.Express): void {
     app.use(BASE_URL_API + CARS, new CarsRouter().router)
-    app.use(BASE_URL_API + GENERALS, new GeneralsRouter().router)
     app.use(
       BASE_URL_API + DOCUMENTACIÓN_Y_MANTENIMIENTOS,
       new DocumentsRouter().router

@@ -16,4 +16,5 @@ export type IMotor = {
   circuito_de_lubricación: number
   circuito_del_refrigerante: number
   circuito_del_combustible: number
+  car_id: number
 }

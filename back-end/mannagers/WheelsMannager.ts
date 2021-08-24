@@ -1,4 +1,3 @@
-import { IWheels } from '../models/interface/IWheels'
 import Wheels from '../models/entities/Wheels'
 import { WheelsDTO } from 'models/dtos/WheelsDTO'
 
@@ -8,7 +7,7 @@ export class WheelsMannager {
     this.querys = new Wheels()
   }
 
-  async createWheels(data: IWheels): Promise<WheelsDTO> {
+  async createWheels(data: WheelsDTO): Promise<WheelsDTO> {
     return this.querys.create(data)
   }
 
@@ -20,7 +19,7 @@ export class WheelsMannager {
     return this.querys.getById(id)
   }
 
-  async updateWheels(id: number, data: IWheels): Promise<WheelsDTO> {
+  async updateWheels(id: number, data: WheelsDTO): Promise<WheelsDTO> {
     return this.querys.update(id, data)
   }
 }
