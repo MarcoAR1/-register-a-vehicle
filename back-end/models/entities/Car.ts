@@ -52,5 +52,10 @@ export default class Car extends BaseModel {
     const res = await this.saveChange({ id, data, tableName: this.tableName })
     return new CarDTO(res)
   }
+
+  public async getByCar_id(car_id: number): Promise<CarDTO> {
+    const res = await this.findOne({ car_id }, this.tableName)
+    return new CarDTO(res)
+  }
 }
 export const columnsProperties = Car.columnsProperties

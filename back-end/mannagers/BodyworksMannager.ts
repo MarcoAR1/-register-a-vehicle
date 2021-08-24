@@ -22,4 +22,8 @@ export class BodyworksMannager {
   async updateBodywork(id: number, data: BodyworkDTO): Promise<BodyworkDTO> {
     return this.querys.update(id, data)
   }
+
+  async getBodyworkCar_id(car_id: number): Promise<BodyworkDTO> {
+    return this.querys.getByCar_id(car_id)
+  }
 }

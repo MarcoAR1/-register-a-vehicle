@@ -60,5 +60,10 @@ export default class Bodywork extends BaseModel {
     const res = await this.saveChange({ id, data, tableName: this.tableName })
     return new BodyworkDTO(res)
   }
+
+  public async getByCar_id(car_id: number): Promise<BodyworkDTO> {
+    const res = await this.findOne({ car_id }, this.tableName)
+    return new BodyworkDTO(res)
+  }
 }
 export const columnsProperties = Bodywork.columnsProperties

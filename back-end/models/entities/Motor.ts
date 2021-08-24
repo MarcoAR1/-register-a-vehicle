@@ -61,5 +61,10 @@ export default class Motor extends BaseModel {
     const res = await this.saveChange({ id, data, tableName: this.tableName })
     return new MotorDTO(res)
   }
+
+  public async getByCar_id(car_id: number): Promise<MotorDTO> {
+    const res = await this.findOne({ car_id }, this.tableName)
+    return new MotorDTO(res)
+  }
 }
 export const columnsProperties = Motor.columnsProperties

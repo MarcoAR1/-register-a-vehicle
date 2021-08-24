@@ -22,4 +22,8 @@ export class InsidesMannager {
   async updateInside(id: number, data: InsideDTO): Promise<InsideDTO> {
     return this.querys.update(id, data)
   }
+
+  async getInsideCar_id(car_id: number): Promise<InsideDTO> {
+    return this.querys.getByCar_id(car_id)
+  }
 }

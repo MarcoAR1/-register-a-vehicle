@@ -18,6 +18,9 @@ export class DocumentsMannager {
   async getDocumentById(id: number): Promise<DocumentDTO> {
     return this.querys.getById(id)
   }
+  async getDocumentCar_id(car_id: number): Promise<DocumentDTO> {
+    return this.querys.getByCar_id(car_id)
+  }
 
   async updateDocument(
     id: number,

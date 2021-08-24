@@ -48,5 +48,10 @@ export default class Inside extends BaseModel {
     const res = await this.saveChange({ id, data, tableName: this.tableName })
     return new InsideDTO(res)
   }
+
+  public async getByCar_id(car_id: number): Promise<InsideDTO> {
+    const res = await this.findOne({ car_id }, this.tableName)
+    return new InsideDTO(res)
+  }
 }
 export const columnsProperties = Inside.columnsProperties

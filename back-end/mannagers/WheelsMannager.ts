@@ -22,4 +22,8 @@ export class WheelsMannager {
   async updateWheels(id: number, data: WheelsDTO): Promise<WheelsDTO> {
     return this.querys.update(id, data)
   }
+
+  async getWheelsCar_id(car_id: number): Promise<WheelsDTO> {
+    return this.querys.getByCar_id(car_id)
+  }
 }

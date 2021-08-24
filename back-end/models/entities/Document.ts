@@ -53,6 +53,11 @@ export default class Document extends BaseModel {
     const res = await this.saveChange({ id, data, tableName: this.tableName })
     return new DocumentDTO(res)
   }
+
+  public async getByCar_id(car_id: number): Promise<DocumentDTO> {
+    const res = await this.findOne({ car_id }, this.tableName)
+    return new DocumentDTO(res)
+  }
 }
 
 export const columnsProperties = Document.columnsProperties

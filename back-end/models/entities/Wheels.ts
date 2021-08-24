@@ -60,5 +60,10 @@ export default class Wheels extends BaseModel {
     const res = await this.saveChange({ id, data, tableName: this.tableName })
     return new WheelsDTO(res)
   }
+
+  public async getByCar_id(car_id: number): Promise<WheelsDTO> {
+    const res = await this.findOne({ car_id }, this.tableName)
+    return new WheelsDTO(res)
+  }
 }
 export const columnsProperties = Wheels.columnsProperties

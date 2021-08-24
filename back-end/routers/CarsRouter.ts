@@ -33,7 +33,6 @@ export class CarsRouter extends BaseRouter {
     const car = await this.CarsMannager.createCar(req.body)
     if (!car.id)
       return res.status(400).json({ error: 'Error al crear el auto' })
-
     const children = await this.generateChildrenTable(car.id)
     res.status(200).json({
       id: car.id,
@@ -55,29 +54,52 @@ export class CarsRouter extends BaseRouter {
 
   private async getCarById(req: express.Request, res: express.Response) {
     const { id } = req.params
-    const response = await this.CarsMannager.getCarById(+id)
-    res.status(200).json(response)
+    const children = await this.getChildrensTable(+id)
+    res.status(200).json({
+      id,
+      ...children,
+    })
+  }
+
+  private async getChildrensTable(car_id: number) {
+    const request = await Promise.allSettled([
+      this.DocumentsMannager.getDocumentCar_id(car_id),
+      this.BodyworksMannager.getBodyworkCar_id(car_id),
+      this.InsidesMannager.getInsideById(car_id),
+      this.MotorsMannager.getMotorById(car_id),
+      this.WheelsMannager.getWheelsCar_id(car_id),
+      this.CarsMannager.getCarById(car_id),
+    ])
+
+    return {
+      car: request[5]['value'],
+      documentacion_y_mantenimiento: request[0]['value'],
+      carroceria: request[1]['value'],
+      interior_general: request[2]['value'],
+      motor: request[3]['value'],
+      ruedas__frenos__suspension_y_direccion: request[4]['value'],
+    }
   }
 
   private async generateChildrenTable(car_id: number) {
-    const documentacion_y_mantenimiento =
-      await this.DocumentsMannager.createDocument({ car_id })
-    const carroceria = await this.BodyworksMannager.createBodywork({
-      car_id,
-    })
-    const interior_general = await this.InsidesMannager.createInside({
-      car_id,
-    })
-    const motor = await this.MotorsMannager.createMotor({ car_id })
-    const ruedas__frenos__suspension_y_direccion =
-      await this.WheelsMannager.createWheels({ car_id })
+    const request = await Promise.allSettled([
+      this.DocumentsMannager.createDocument({ car_id }),
+      this.InsidesMannager.createInside({
+        car_id,
+      }),
+      this.InsidesMannager.createInside({
+        car_id,
+      }),
+      this.MotorsMannager.createMotor({ car_id }),
+      this.WheelsMannager.createWheels({ car_id }),
+    ])
 
     return {
-      documentacion_y_mantenimiento,
-      carroceria,
-      interior_general,
-      motor,
-      ruedas__frenos__suspension_y_direccion,
+      documentacion_y_mantenimiento: request[0]['value'],
+      carroceria: request[1]['value'],
+      interior_general: request[2]['value'],
+      motor: request[3]['value'],
+      ruedas__frenos__suspension_y_direccion: request[4]['value'],
     }
   }
 

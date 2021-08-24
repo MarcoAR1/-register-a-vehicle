@@ -22,4 +22,8 @@ export class MotorsMannager {
   async updateMotor(id: number, data: MotorDTO): Promise<MotorDTO> {
     return this.querys.update(id, data)
   }
+
+  async getMotorCar_id(car_id: number): Promise<MotorDTO> {
+    return this.querys.getByCar_id(car_id)
+  }
 }
