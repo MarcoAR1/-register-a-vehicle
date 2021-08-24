@@ -1,5 +1,5 @@
 import { IMotor } from '../models/interface/IMotor'
-import { Motor } from '../models/entities/Motor'
+import Motor from '../models/entities/Motor'
 import { MotorDTO } from 'models/dtos/MotorDTO'
 
 export class MotorsMannager {

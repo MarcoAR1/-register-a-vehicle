@@ -1,5 +1,5 @@
 import { IDocument } from '../models/interface/IDocument'
-import { Document } from '../models/entities/Document'
+import Document from '../models/entities/Document'
 import { DocumentDTO } from 'models/dtos/DocumentDTO'
 
 export class DocumentsMannager {

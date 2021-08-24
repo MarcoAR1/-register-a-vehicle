@@ -18,7 +18,7 @@ export class Server {
     Server.configureApp()
     Router.initializeRoutes(Server.app)
     Server.app.use(errorHandler)
-    DATABASE.initDatabase()
+    await DATABASE.initDatabase()
     return Server.app.listen(Server.app.get('port'), () =>
       console.log(
         'Server is running at %d in %s mode',

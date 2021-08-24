@@ -3,7 +3,7 @@ import { BaseModel } from './BaseModel'
 import { PgType } from '../../db'
 import { IGeneral } from '../interface/IGeneral'
 import { GENERALS } from '../../constants/constants'
-export class General extends BaseModel {
+export default class General extends BaseModel {
   public DB: PgType
   public tableName: string
   public static tableName = GENERALS
@@ -48,3 +48,4 @@ export class General extends BaseModel {
     return new GeneralDTO(res)
   }
 }
+export const columnsProperties = General.columnsProperties

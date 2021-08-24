@@ -3,21 +3,17 @@ import { BaseModel } from './BaseModel'
 import { PgType } from '../../db'
 import { ICar } from '../interface/ICar'
 import { CARS } from '../../constants/constants'
-export class Car extends BaseModel {
+export default class Car extends BaseModel {
   public DB: PgType
   public tableName: string
   public static tableName = CARS
   public static columnsProperties: { [key: string]: string } = {
     id: 'SERIAL NOT NULL PRIMARY KEY',
-    general: 'INTEGER NOT NULL',
-    documentación_y_mantenimiento: 'INTEGER NOT NULL',
-    ruedas__frenos__suspension_y_dirección: 'INTEGER NOT NULL',
-    carrocería: 'INTEGER NOT NULL',
-    motor: 'INTEGER NOT NULL',
-    alumbrado: 'INTEGER NOT NULL',
-    volante_y_tablero: 'INTEGER NOT NULL',
-    interior_y_asientos: 'INTEGER NOT NULL',
-    interior_general: 'INTEGER NOT NULL',
+    propietario: 'VARCHAR(50) NOT NULL',
+    email: 'VARCHAR(255) NOT NULL',
+    km: 'VARCHAR(255) NOT NULL',
+    precio: 'VARCHAR(255) NOT NULL',
+    image: 'TEXT NOT NULL',
   }
 
   constructor() {
@@ -50,3 +46,4 @@ export class Car extends BaseModel {
     return new CarDTO(res)
   }
 }
+export const columnsProperties = Car.columnsProperties

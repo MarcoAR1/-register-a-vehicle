@@ -4,7 +4,7 @@ import { PgType } from '../../db'
 import { IMotor } from '../interface/IMotor'
 import { MOTOR } from '../../constants/constants'
 
-export class Motor extends BaseModel {
+export default class Motor extends BaseModel {
   public DB: PgType
   public tableName: string
   public static tableName = MOTOR
@@ -61,3 +61,4 @@ export class Motor extends BaseModel {
     return new MotorDTO(res)
   }
 }
+export const columnsProperties = Motor.columnsProperties

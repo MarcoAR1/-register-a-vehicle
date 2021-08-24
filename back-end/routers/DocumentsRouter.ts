@@ -3,7 +3,8 @@ import { BaseRouter } from './BaseRouter'
 import * as express from 'express'
 import { DocumentsMannager } from '../mannagers/DocumentsMannager'
 import { DocumentDTO } from '../models/dtos/DocumentDTO'
-
+import { VerifyProps } from './middleware/VerifyProps'
+import { columnsProperties } from '../models/entities/Document'
 export class DocumentsRouter extends BaseRouter {
   private DocumentsMannager: DocumentsMannager
   constructor() {
@@ -26,30 +27,32 @@ export class DocumentsRouter extends BaseRouter {
 
   private async updateDocument(req: express.Request, res: express.Response) {
     const { id } = req.params
-    if (isNaN(+id)) {
-      return res.status(400).json({
-        message: 'El id debe ser un numero',
-      })
-    }
     const response = await this.DocumentsMannager.updateDocument(+id, req.body)
     res.status(200).json(response)
   }
 
   private async getDocumentById(req: express.Request, res: express.Response) {
     const { id } = req.params
-    if (isNaN(+id)) {
-      return res.status(400).json({
-        message: 'El id debe ser un numero',
-      })
-    }
     const response = await this.DocumentsMannager.getDocumentById(+id)
     res.status(200).json(response)
   }
 
   private buildRoutes() {
-    this.router.post(PATH_INICIAL, this.createDocument.bind(this))
-    this.router.put(PARAM_PATH_ID, this.updateDocument.bind(this))
+    this.router.post(
+      PATH_INICIAL,
+      VerifyProps.checkProps(Object.keys(columnsProperties)),
+      this.createDocument.bind(this)
+    )
+    this.router.put(
+      PARAM_PATH_ID,
+      VerifyProps.checkIdIsANumber,
+      this.updateDocument.bind(this)
+    )
     this.router.get(PATH_INICIAL, this.getDocuments.bind(this))
-    this.router.get(PARAM_PATH_ID, this.getDocumentById.bind(this))
+    this.router.get(
+      PARAM_PATH_ID,
+      VerifyProps.checkIdIsANumber,
+      this.getDocumentById.bind(this)
+    )
   }
 }

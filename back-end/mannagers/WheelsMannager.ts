@@ -1,5 +1,5 @@
 import { IWheels } from '../models/interface/IWheels'
-import { Wheels } from '../models/entities/Wheels'
+import Wheels from '../models/entities/Wheels'
 import { WheelsDTO } from 'models/dtos/WheelsDTO'
 
 export class WheelsMannager {

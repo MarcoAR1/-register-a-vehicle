@@ -3,7 +3,8 @@ import { BaseRouter } from './BaseRouter'
 import * as express from 'express'
 import { GeneralsMannager } from '../mannagers/GeneralsMannager'
 import { GeneralDTO } from '../models/dtos/GeneralDTO'
-
+import { VerifyProps } from './middleware/VerifyProps'
+import { columnsProperties } from '../models/entities/General'
 export class GeneralsRouter extends BaseRouter {
   private GeneralsMannager: GeneralsMannager
   constructor() {
@@ -25,30 +26,32 @@ export class GeneralsRouter extends BaseRouter {
 
   private async updateGeneral(req: express.Request, res: express.Response) {
     const { id } = req.params
-    if (isNaN(+id)) {
-      return res.status(400).json({
-        message: 'El id debe ser un numero',
-      })
-    }
     const response = await this.GeneralsMannager.updateGeneral(+id, req.body)
     res.status(200).json(response)
   }
 
   private async getGeneralById(req: express.Request, res: express.Response) {
     const { id } = req.params
-    if (isNaN(+id)) {
-      return res.status(400).json({
-        message: 'El id debe ser un numero',
-      })
-    }
     const response = await this.GeneralsMannager.getGeneralById(+id)
     res.status(200).json(response)
   }
 
   private buildRoutes() {
-    this.router.post(PATH_INICIAL, this.createGeneral.bind(this))
-    this.router.put(PARAM_PATH_ID, this.updateGeneral.bind(this))
+    this.router.post(
+      PATH_INICIAL,
+      VerifyProps.checkProps(Object.keys(columnsProperties)),
+      this.createGeneral.bind(this)
+    )
+    this.router.put(
+      PARAM_PATH_ID,
+      VerifyProps.checkIdIsANumber,
+      this.updateGeneral.bind(this)
+    )
     this.router.get(PATH_INICIAL, this.getGenerals.bind(this))
-    this.router.get(PARAM_PATH_ID, this.getGeneralById.bind(this))
+    this.router.get(
+      PARAM_PATH_ID,
+      VerifyProps.checkIdIsANumber,
+      this.getGeneralById.bind(this)
+    )
   }
 }

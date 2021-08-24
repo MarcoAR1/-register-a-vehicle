@@ -1,10 +1,11 @@
 import { BaseModel } from './entities/BaseModel'
-import { Bodywork } from './entities/Bodywork'
-import { Car } from './entities/Car'
-import { Document } from './entities/Document'
-import { General } from './entities/General'
-import { Motor } from './entities/Motor'
-import { Wheels } from './entities/Wheels'
+import Bodywork from './entities/Bodywork'
+import Car from './entities/Car'
+import Document from './entities/Document'
+import General from './entities/General'
+import Inside from './entities/Inside'
+import Motor from './entities/Motor'
+import Wheels from './entities/Wheels'
 
 export default class Models {
   public static async initModels(): Promise<void> {
@@ -15,6 +16,6 @@ export default class Models {
   }
 
   private static getModels(): typeof BaseModel[] {
-    return [Car, General, Document, Wheels, Bodywork, Motor]
+    return [Car, General, Document, Wheels, Bodywork, Motor, Inside]
   }
 }

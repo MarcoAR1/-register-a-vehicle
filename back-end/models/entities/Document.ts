@@ -4,7 +4,7 @@ import { PgType } from '../../db'
 import { IDocument } from '../interface/IDocument'
 import { DOCUMENTACIÓN_Y_MANTENIMIENTOS } from '../../constants/constants'
 
-export class Document extends BaseModel {
+export default class Document extends BaseModel {
   public DB: PgType
   public tableName: string
   public static tableName = DOCUMENTACIÓN_Y_MANTENIMIENTOS
@@ -53,3 +53,5 @@ export class Document extends BaseModel {
     return new DocumentDTO(res)
   }
 }
+
+export const columnsProperties = Document.columnsProperties

@@ -18,25 +18,24 @@ export class WheelsDTO {
   manguetas: number
   extremos_de_dirección: number
 
-  constructor(Wheels: IWheels) {
-    Wheels.id && (this.id = Wheels.id)
-    this.modelo_identico_de_neumáticos = Wheels.modelo_identico_de_neumáticos
-    this.desgaste_del_neumático = Wheels.desgaste_del_neumático
-    this.presión_adecuada_del_neumático = Wheels.presión_adecuada_del_neumático
-    this.llanta_sin_daños = Wheels.llanta_sin_daños
-    this.tuercas_de_seguridad = Wheels.tuercas_de_seguridad
-    this.espesor_de_la_pastilla_de_freno =
-      Wheels.espesor_de_la_pastilla_de_freno
-    this.bielas = Wheels.bielas
-    this.rótulas = Wheels.rótulas
-    this.tipo_de_neumático_correcto = Wheels.tipo_de_neumático_correcto
+  constructor(data: IWheels) {
+    data.id && (this.id = data.id)
+    this.modelo_identico_de_neumáticos = data.modelo_identico_de_neumáticos
+    this.desgaste_del_neumático = data.desgaste_del_neumático
+    this.presión_adecuada_del_neumático = data.presión_adecuada_del_neumático
+    this.llanta_sin_daños = data.llanta_sin_daños
+    this.tuercas_de_seguridad = data.tuercas_de_seguridad
+    this.espesor_de_la_pastilla_de_freno = data.espesor_de_la_pastilla_de_freno
+    this.bielas = data.bielas
+    this.rótulas = data.rótulas
+    this.tipo_de_neumático_correcto = data.tipo_de_neumático_correcto
     this.desgaste_homogeneo_de_neumáticos =
-      Wheels.desgaste_homogeneo_de_neumáticos
-    this.neumático_sin_daños = Wheels.neumático_sin_daños
-    this.tornillos_y_llave_de_llanta = Wheels.tornillos_y_llave_de_llanta
-    this.espesor_del_disco_de_freno = Wheels.espesor_del_disco_de_freno
-    this.brazo_de_suspensión = Wheels.brazo_de_suspensión
-    this.manguetas = Wheels.manguetas
-    this.extremos_de_dirección = Wheels.extremos_de_dirección
+      data.desgaste_homogeneo_de_neumáticos
+    this.neumático_sin_daños = data.neumático_sin_daños
+    this.tornillos_y_llave_de_llanta = data.tornillos_y_llave_de_llanta
+    this.espesor_del_disco_de_freno = data.espesor_del_disco_de_freno
+    this.brazo_de_suspensión = data.brazo_de_suspensión
+    this.manguetas = data.manguetas
+    this.extremos_de_dirección = data.extremos_de_dirección
   }
 }

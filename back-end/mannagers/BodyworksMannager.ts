@@ -1,5 +1,5 @@
 import { IBodywork } from '../models/interface/IBodywork'
-import { Bodywork } from '../models/entities/Bodywork'
+import Bodywork from '../models/entities/Bodywork'
 import { BodyworkDTO } from 'models/dtos/BodyworkDTO'
 
 export class BodyworksMannager {

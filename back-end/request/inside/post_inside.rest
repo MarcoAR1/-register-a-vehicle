@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/interior_general
+Content-Type: application/json
+
+{
+  "asiento_conductor": 5,
+  "asiento_acompañante": 5,
+  "techo": 5,
+  "maletero": 5
+}

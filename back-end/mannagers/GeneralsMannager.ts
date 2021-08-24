@@ -1,5 +1,5 @@
 import { IGeneral } from '../models/interface/IGeneral'
-import { General } from '../models/entities/General'
+import General from '../models/entities/General'
 import { GeneralDTO } from 'models/dtos/GeneralDTO'
 
 export class GeneralsMannager {

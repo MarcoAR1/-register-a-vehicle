@@ -1,5 +1,5 @@
 import { ICar } from '../models/interface/ICar'
-import { Car } from '../models/entities/Car'
+import Car from '../models/entities/Car'
 import { CarDTO } from 'models/dtos/CarDTO'
 
 export class CarsMannager {

@@ -1,14 +1,18 @@
-POST http://localhost:3000/api/cars
+POST http://localhost:3000/api/car
 Content-Type: application/json
 
 {
-  "general": 0,
-  "documentación_y_mantenimiento": 0,
-  "ruedas__frenos__suspension_y_dirección": 0,
-  "carrocería": 0,
-  "motor": 0,
-  "alumbrado": 0,
-  "volante_y_tablero": 0,
-  "interior_y_asientos": 0,
-  "interior_general": 0
+  "propietario": "'DROP TABLE car",
+  "email": 0,
+  "km": 0,
+  "precio": 0,
+  "image": {
+    "front": "",
+    "back": "",
+    "left": "",
+    "right": "",
+    "inside": "",
+    "outside": "",
+    "engine": ""
+  }
 }

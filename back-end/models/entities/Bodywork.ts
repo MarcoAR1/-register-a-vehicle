@@ -4,7 +4,7 @@ import { PgType } from '../../db'
 import { IBodywork } from '../interface/IBodywork'
 import { BODYWORK } from '../../constants/constants'
 
-export class Bodywork extends BaseModel {
+export default class Bodywork extends BaseModel {
   public DB: PgType
   public tableName: string
   public static tableName = BODYWORK
@@ -60,3 +60,4 @@ export class Bodywork extends BaseModel {
     return new BodyworkDTO(res)
   }
 }
+export const columnsProperties = Bodywork.columnsProperties

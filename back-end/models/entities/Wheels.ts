@@ -4,7 +4,7 @@ import { PgType } from '../../db'
 import { IWheels } from '../interface/IWheels'
 import { WHEELS } from '../../constants/constants'
 
-export class Wheels extends BaseModel {
+export default class Wheels extends BaseModel {
   public DB: PgType
   public tableName: string
   public static tableName = WHEELS
@@ -60,3 +60,4 @@ export class Wheels extends BaseModel {
     return new WheelsDTO(res)
   }
 }
+export const columnsProperties = Wheels.columnsProperties
