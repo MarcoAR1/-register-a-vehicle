@@ -1,10 +1,12 @@
-import 'express-async-errors'
+import path = require('path')
+require('express-async-errors')
+import 'dotenv/config'
 import * as express from 'express'
 import * as http from 'http'
 import * as cors from 'cors'
 import * as morgan from 'morgan'
 import { PORT, NODE_ENV } from './utils/config'
-import { DEVELOPMENTMODE } from './constants/constants'
+import { DEVELOPMENTMODE, STATIC_PUBLIC_PATH } from './constants/constants'
 import DATABASE from './db'
 import { Router } from './routers'
 import { errorHandler } from './errors/ErrorHandler'
@@ -16,6 +18,8 @@ export class Server {
     Server.app.use(express.json())
     Server.configureApp()
     Router.initializeRoutes(Server.app)
+    Server.app.use(express.static(path.join(__dirname, STATIC_PUBLIC_PATH)))
+    console.log(path.join(__dirname, STATIC_PUBLIC_PATH))
     Server.app.use(errorHandler)
     await DATABASE.initDatabase()
     return Server.app.listen(Server.app.get('port'), () =>
@@ -31,12 +35,14 @@ export class Server {
     Server.app.set('port', PORT || 3001)
     Server.app.use(express.json())
     Server.app.use(cors())
-    if (NODE_ENV === DEVELOPMENTMODE) {
-      Server.app.use(
-        morgan(
-          ':method :url :status :res[content-length] - :response-time ms :json'
-        )
+    Server.app.use(
+      morgan(
+        `:method :url :status :res[content-length] - :response-time ms ${
+          NODE_ENV === DEVELOPMENTMODE && ':json'
+        }`
       )
+    )
+    if (NODE_ENV === DEVELOPMENTMODE) {
       morgan.token('json', (req: express.Request) => {
         return JSON.stringify(req.body)
       })

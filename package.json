@@ -2,7 +2,7 @@
   "name": "register-a-vehicle",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "back-end/index.ts",
   "engines": {
     "npm": "^7.9.0",
     "node": "^15.8.0"
@@ -12,9 +12,9 @@
     "front-end"
   ],
   "scripts": {
-    "build": "npm run build --workspaces && npm run copy ",
-    "start": "cross-env NODE_ENV=production node dist/index.js",
-    "copy": "cp -r back-end/dist . && cp -r front-end/dist dist/ ",
+    "build": "npm run build --workspace=front-end && npm run copy ",
+    "start": "npm run start --workspace=back-end",
+    "copy": "cp -r front-end/dist back-end/",
     "dev:back": "npm run dev --workspace=back-end",
     "dev:front": "npm run dev --workspace=front-end",
     "test": "npm run test --workspaces",

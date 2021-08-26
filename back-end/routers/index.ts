@@ -1,8 +1,6 @@
 import * as express from 'express'
-import path = require('path')
 import {
   BASE_URL_API,
-  STATIC_PUBLIC_PATH,
   CARS,
   DOCUMENTACIÓN_Y_MANTENIMIENTOS,
   WHEELS,
@@ -28,6 +26,5 @@ export class Router {
     app.use(BASE_URL_API + BODYWORK, new BodyworksRouter().router)
     app.use(BASE_URL_API + MOTOR, new MotorsRouter().router)
     app.use(BASE_URL_API + INSIDE, new InsidesRouter().router)
-    app.use(express.static(path.join(__dirname, STATIC_PUBLIC_PATH)))
   }
 }
