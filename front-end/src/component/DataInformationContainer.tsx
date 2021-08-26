@@ -25,9 +25,7 @@ const DataInformationContainer = (): JSX.Element => {
       <AppBar
         position="static"
         color="default"
-        style={{
-          borderRadius: '10px',
-        }}
+
       >
         <TabIndex
           keyForTabs={keyCarDetail}

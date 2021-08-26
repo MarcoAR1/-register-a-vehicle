@@ -1,18 +1,16 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import RatingStartView from './RatingStartView'
-import classes from '../styleModule/PanelDetailCard.module.css'
 import { fixedKeyName } from '../utils/fixedKeyName'
 import { Typography } from '@material-ui/core'
 import useCarDetail from '../hook/useCarDetail'
 import { updateDetailsCar } from '../service/updateDetailsCar'
-
-interface PanelDetailCardProps {
-  index: string
-}
+import useStyles from '../stylemodule/PanelDetailCardStlye'
+import { PanelDetailCardProps } from '../interface/interface'
 
 const PanelDetailCard = ({ index }: PanelDetailCardProps): JSX.Element => {
   const [keyForInfoCard, setKeyForInfoCard] = useState<string[]>([])
   const { carDetail, setCarDetail } = useCarDetail()
+  const classes = useStyles()
 
   const handlerEditDetails = useCallback(
     (value: number, name: string): void => {

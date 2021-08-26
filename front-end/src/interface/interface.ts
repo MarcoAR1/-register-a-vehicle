@@ -30,3 +30,7 @@ export interface RatingStartViewProps {
   onClick: (index: number, name: string) => void
   name: string
 }
+
+export interface PanelDetailCardProps {
+  index: string
+}
