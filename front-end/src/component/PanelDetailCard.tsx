@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import RatingStartView from './RatingStartView'
-import classes from '../StyleModule/PanelDetailCard.module.css'
+import classes from '../styleModule/PanelDetailCard.module.css'
 import { fixedKeyName } from '../utils/fixedKeyName'
 import { Typography } from '@material-ui/core'
 import useCarDetail from '../hook/useCarDetail'

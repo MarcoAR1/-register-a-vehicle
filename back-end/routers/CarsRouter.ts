@@ -113,7 +113,7 @@ export class CarsRouter extends BaseRouter {
       this.createCar.bind(this)
     )
     this.router.put(PARAM_PATH_ID, checkIdIsANumber, this.updateCar.bind(this))
-    this.router.get(PATH_INICIAL, this.getCars.bind(this))
     this.router.get(PARAM_PATH_ID, checkIdIsANumber, this.getCarById.bind(this))
+    this.router.get(PATH_INICIAL, this.getCars.bind(this))
   }
 }

@@ -38,21 +38,21 @@ export class WheelsRouter extends BaseRouter {
   }
 
   private buildRoutes() {
-    this.router.post(
-      PATH_INICIAL,
-      checkProps(Object.keys(columnsProperties)),
-      this.createWheels.bind(this)
-    )
     this.router.put(
       PARAM_PATH_ID,
       checkIdIsANumber,
       this.updateWheels.bind(this)
     )
-    this.router.get(PATH_INICIAL, this.getWheels.bind(this))
     this.router.get(
       PARAM_PATH_ID,
       checkIdIsANumber,
       this.getWheelsById.bind(this)
+    )
+    this.router.get(PATH_INICIAL, this.getWheels.bind(this))
+    this.router.post(
+      PATH_INICIAL,
+      checkProps(Object.keys(columnsProperties)),
+      this.createWheels.bind(this)
     )
   }
 }
