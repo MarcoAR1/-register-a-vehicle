@@ -9,6 +9,7 @@ import { BodyworksMannager } from '../mannagers/BodyworksMannager'
 import { InsidesMannager } from '../mannagers/InsidesMannager'
 import { MotorsMannager } from '../mannagers/MotorsMannager'
 import { WheelsMannager } from '../mannagers/WheelsMannager'
+import { NotFoundError } from '../errors/NotFoundError'
 
 export class CarsRouter extends BaseRouter {
   private CarsMannager: CarsMannager
@@ -56,7 +57,6 @@ export class CarsRouter extends BaseRouter {
     const { id } = req.params
     const children = await this.getChildrensTable(+id)
     res.status(200).json({
-      id,
       ...children,
     })
   }
@@ -70,30 +70,33 @@ export class CarsRouter extends BaseRouter {
       this.WheelsMannager.getWheelsCar_id(car_id),
       this.CarsMannager.getCarById(car_id),
     ])
+    if (request[0]['status'] === 'rejected')
+      throw new NotFoundError(request[0].reason.message)
 
+    const car = request[5]['value']
+    const image = car.image
+    delete car.image
     return {
-      car: request[5]['value'],
+      car,
       documentacion_y_mantenimiento: request[0]['value'],
       carroceria: request[1]['value'],
       interior_general: request[2]['value'],
       motor: request[3]['value'],
       ruedas__frenos__suspension_y_direccion: request[4]['value'],
+      image,
     }
   }
 
   private async generateChildrenTable(car_id: number) {
     const request = await Promise.allSettled([
       this.DocumentsMannager.createDocument({ car_id }),
-      this.InsidesMannager.createInside({
-        car_id,
-      }),
+      this.BodyworksMannager.createBodywork({ car_id }),
       this.InsidesMannager.createInside({
         car_id,
       }),
       this.MotorsMannager.createMotor({ car_id }),
       this.WheelsMannager.createWheels({ car_id }),
     ])
-
     return {
       documentacion_y_mantenimiento: request[0]['value'],
       carroceria: request[1]['value'],

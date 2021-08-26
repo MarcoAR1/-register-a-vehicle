@@ -2,7 +2,7 @@ POST http://localhost:3000/api/car
 Content-Type: application/json
 
 {
-  "propietario": "'DROP TABLE car",
+  "propietario": "2022 BMW iX5 Hydrogen",
   "email": 0,
   "km": 0,
   "precio": 0,
@@ -14,12 +14,11 @@ Content-Type: application/json
   "numero_de_puertas": 4,
   "tipo_de_carrocería": "tipo de carrocería",
   "image": {
-    "front": "",
-    "back": "",
-    "left": "",
-    "right": "",
-    "inside": "",
-    "outside": "",
-    "engine": ""
+    "front": "https://www.auto-data.net/images/f35/BMW-iX5-Hydrogen_thumb_1.jpg",
+    "back": "https://www.auto-data.net/images/f46/BMW-iX5-Hydrogen.jpg",
+    "left": "https://www.auto-data.net/images/f90/BMW-iX5-Hydrogen.jpg",
+    "right": "https://www.auto-data.net/images/f35/BMW-iX5-Hydrogen.jpg",
+    "inside": "https://www.auto-data.net/images/f66/BMW-iX5-Hydrogen_2.jpg",
+    "engine": "https://www.auto-data.net/images/f36/BMW-iX5-Hydrogen.jpg"
   }
 }

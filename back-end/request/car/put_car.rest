@@ -2,17 +2,12 @@ PUT http://localhost:3000/api/car/1
 Content-Type: application/json
 
 {
-  "propietario": "aaa",
-  "email": 0,
-  "km": 0,
-  "precio": 0,
-  "image": {
-    "front": "aaaa",
-    "back": "",
-    "left": "",
-    "right": "",
-    "inside": "",
-    "outside": "",
-    "engine": ""
+ "image": {
+    "front": "https://www.auto-data.net/images/f35/BMW-iX5-Hydrogen_2.jpg",
+    "back": "https://www.auto-data.net/images/f46/BMW-iX5-Hydrogen.jpg",
+    "left": "https://www.auto-data.net/images/f90/BMW-iX5-Hydrogen.jpg",
+    "right": "https://www.auto-data.net/images/f35/BMW-iX5-Hydrogen.jpg",
+    "inside": "https://www.auto-data.net/images/f66/BMW-iX5-Hydrogen_2.jpg",
+    "engine": "https://www.auto-data.net/images/f36/BMW-iX5-Hydrogen.jpg"
   }
 }

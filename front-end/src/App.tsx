@@ -1,43 +1,28 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
-
-function App():JSX.Element {
-  const [count, setCount] = useState(0)
+import React, { useEffect } from 'react'
+import CarImage from './component/CarImage'
+import DataInformationContainer from './component/DataInformationContainer'
+import useCarDetail from './hook/useCarDetail'
+import { getCars, getOneCar } from './service/getInfoCar'
+export const App = (): JSX.Element => {
+  const { setCarDetail, setKeyCarDetail, setCarImage, setKeyCarImage } = useCarDetail()
+  useEffect(() => {
+    getCars().then((res) => res.json().then((data) => console.log(data)))
+    getOneCar(1).then((res) =>
+      res.json().then((data) => {
+        const image = JSON.parse(data.image)
+        setCarImage(image)
+        setKeyCarImage(Object.keys(image))
+        delete data.image
+        setCarDetail(data)
+        setKeyCarDetail(Object.keys(data))
+      })
+    )
+  }, [])
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      <CarImage />
+      <DataInformationContainer />
     </div>
   )
 }
