@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "npm": "^7.9.0"
+    "npm": "^7.9.0",
+    "node": "^15"
   },
   "workspaces": [
     "back-end",
