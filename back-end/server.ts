@@ -1,5 +1,4 @@
-require('express-async-errors')
-require('dotenv').config()
+import 'express-async-errors'
 import * as express from 'express'
 import * as http from 'http'
 import * as cors from 'cors'
