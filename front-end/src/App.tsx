@@ -7,16 +7,21 @@ export const App = (): JSX.Element => {
   const { setCarDetail, setKeyCarDetail, setCarImage, setKeyCarImage } =
     useCarDetail()
   useEffect(() => {
-    getOneCar(1).then((res) =>
-      res.json().then((data) => {
-        const image = JSON.parse(data.image)
-        setCarImage(image)
-        setKeyCarImage(Object.keys(image))
-        delete data.image
-        setCarDetail(data)
-        setKeyCarDetail(Object.keys(data))
-      })
-    )
+    getOneCar(1)
+      .then((res) =>
+        res
+          .json()
+          .then((data) => {
+            const image = JSON.parse(data.image)
+            setCarImage(image)
+            setKeyCarImage(Object.keys(image))
+            delete data.image
+            setCarDetail(data)
+            setKeyCarDetail(Object.keys(data))
+          })
+          .catch((err) => console.log(err))
+      )
+      .catch((err) => console.log(err))
   }, [])
 
   return (

@@ -18,7 +18,9 @@ export const CarDetailProvider = ({
   const [keyCarImage, setKeyCarImage] = useState<string[]>([])
 
   useEffect(() => {
-    getCars().then((res) => res.json().then((data) => setInfoCars(data)))
+    getCars()
+      .then((res) => res.json().then((data) => setInfoCars(data)))
+      .catch((error) => console.log(error))
   }, [])
 
   return (
@@ -35,7 +37,7 @@ export const CarDetailProvider = ({
         carImage,
         setCarImage,
         keyCarImage,
-        setKeyCarImage
+        setKeyCarImage,
       }}
     >
       {children}
