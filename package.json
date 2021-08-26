@@ -12,7 +12,7 @@
   "scripts": {
     "build": "npm run build --workspaces && npm run copy ",
     "start": "npm run start --workspace=back-end",
-    "copy": "cp -r front-end/dist back-end/",
+    "copy": "cp -r front-end/dist back-end/dist",
     "dev:back": "npm run dev --workspace=back-end",
     "dev:front": "npm run dev --workspace=front-end",
     "test": "npm run test --workspaces",
