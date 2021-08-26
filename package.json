@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "engines": {
-    "npm": "^7.9.0"
+    "npm": "^7.9.0",
+    "node": "14.x"
   },
   "workspaces": [
     "back-end",
