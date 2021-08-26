@@ -2,10 +2,8 @@
   "name": "register-a-vehicle",
   "version": "1.0.0",
   "description": "",
-  "main": "back-end/index.ts",
   "engines": {
-    "npm": "^7.9.0",
-    "node": "^15.8.0"
+    "npm": "^7.9.0"
   },
   "workspaces": [
     "back-end",

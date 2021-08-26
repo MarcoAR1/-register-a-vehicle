@@ -19,7 +19,6 @@ export class Server {
     Server.configureApp()
     Router.initializeRoutes(Server.app)
     Server.app.use(express.static(path.join(__dirname, STATIC_PUBLIC_PATH)))
-    console.log(path.join(__dirname, STATIC_PUBLIC_PATH))
     Server.app.use(errorHandler)
     await DATABASE.initDatabase()
     return Server.app.listen(Server.app.get('port'), () =>
