@@ -10,7 +10,7 @@
     "front-end"
   ],
   "scripts": {
-    "build": "npm run build --workspace=front-end && npm run copy ",
+    "build": "npm run build --workspace && npm run copy ",
     "start": "npm run start --workspace=back-end",
     "copy": "cp -r front-end/dist back-end/",
     "dev:back": "npm run dev --workspace=back-end",
