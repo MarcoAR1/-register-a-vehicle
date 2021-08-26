@@ -2,11 +2,11 @@ import React, { useEffect } from 'react'
 import CarImage from './component/CarImage'
 import DataInformationContainer from './component/DataInformationContainer'
 import useCarDetail from './hook/useCarDetail'
-import { getCars, getOneCar } from './service/getInfoCar'
+import { getOneCar } from './service/getInfoCar'
 export const App = (): JSX.Element => {
-  const { setCarDetail, setKeyCarDetail, setCarImage, setKeyCarImage } = useCarDetail()
+  const { setCarDetail, setKeyCarDetail, setCarImage, setKeyCarImage } =
+    useCarDetail()
   useEffect(() => {
-    getCars().then((res) => res.json().then((data) => console.log(data)))
     getOneCar(1).then((res) =>
       res.json().then((data) => {
         const image = JSON.parse(data.image)
