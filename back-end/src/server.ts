@@ -1,5 +1,9 @@
-import path = require('path')
 require('express-async-errors')
+import * as dotenv from 'dotenv'
+import * as path from 'path'
+dotenv.config({
+  path: path.join(__dirname, '../../.env'),
+})
 import * as express from 'express'
 import * as http from 'http'
 import * as cors from 'cors'
