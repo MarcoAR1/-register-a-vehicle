@@ -3,17 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "engines": {
-    "npm": "^7.9.0",
-    "node": "14"
+    "npm": "^7.9.0"
   },
   "workspaces": [
     "back-end",
     "front-end"
   ],
   "scripts": {
-    "build": "npm run build --workspaces && npm run copy ",
+    "build": "npm run build --workspaces && npm run move",
     "start": "npm run start --workspace=back-end",
-    "copy": "cp -r front-end/dist back-end/dist",
+    "move": "cp -r front-end/dist back-end/dist/dist && rm -fr front-end/dist",
     "dev:back": "npm run dev --workspace=back-end",
     "dev:front": "npm run dev --workspace=front-end",
     "test": "npm run test --workspaces",

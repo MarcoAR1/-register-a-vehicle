@@ -1,9 +1,6 @@
 require('express-async-errors')
-import * as dotenv from 'dotenv'
+import 'dotenv/config'
 import * as path from 'path'
-dotenv.config({
-  path: path.join(__dirname, '../../.env'),
-})
 import * as express from 'express'
 import * as http from 'http'
 import * as cors from 'cors'
@@ -37,6 +34,7 @@ export class Server {
     Server.app.set('port', PORT || 3001)
     Server.app.use(express.json())
     Server.app.use(cors())
+    console.log('hola que hace', process.env.PORT)
     Server.app.use(
       morgan(
         `:method :url :status :res[content-length] - :response-time ms ${

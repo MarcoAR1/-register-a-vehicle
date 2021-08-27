@@ -1,0 +1,7 @@
+node_module
+dist
+.env.example
+.eslintignore
+.eslintrc
+.gitignore
+Dockerfile
