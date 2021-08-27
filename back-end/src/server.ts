@@ -34,7 +34,6 @@ export class Server {
     Server.app.set('port', PORT || 3001)
     Server.app.use(express.json())
     Server.app.use(cors())
-    console.log('hola que hace', process.env.PORT)
     Server.app.use(
       morgan(
         `:method :url :status :res[content-length] - :response-time ms ${

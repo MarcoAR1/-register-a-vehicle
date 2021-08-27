@@ -1,7 +1,9 @@
 node_module
 dist
+dist/*
 .env.example
 .eslintignore
 .eslintrc
 .gitignore
 Dockerfile
+node_modules/*
