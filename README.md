@@ -34,7 +34,7 @@ npm run test  # run tests suite in jest
 - frist build project
 
 ```bash
-npm build # Run build back and front
+npm run build # Run build back and front
 ```
 
 - second run project and finish :D
