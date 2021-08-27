@@ -11,10 +11,15 @@ import {
   DB_NAME,
 } from './utils/config'
 import Models from './models/index'
-export default class DATABASE {
+import { IClient } from 'pg-promise/typescript/pg-subset'
+class DATABASE {
   public static DB = pg()(this.getCN())
+  public DB: PgType
 
-  public static async initDatabase(): Promise<void> {
+  public async initDatabase(): Promise<void> {
+    const res = await DATABASE.DB.connect()
+    console.log('database connected')
+    this.DB = res
     if (NODE_ENV !== DEVELOPMENTMODE) {
       console.log(
         `Database ${DB_NAME} is not in development mode try create models`
@@ -32,5 +37,5 @@ export default class DATABASE {
     }`
   }
 }
-
-export type PgType = typeof DATABASE.DB
+export default new DATABASE()
+export type PgType = pg.IConnected<Record<string, unknown>, IClient>
