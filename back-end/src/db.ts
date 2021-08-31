@@ -1,9 +1,14 @@
-import { DEVELOPMENTMODE } from './constants/constants'
 import * as pg from 'pg-promise'
+import { DEVELOPMENTMODE } from './constants/constants'
 import { NODE_ENV } from './utils/config'
 import Models from './models/index'
 export default class DATABASE {
-  public static DB = pg()(`${process.env.DATABASE_URL}?ssl=true`)
+  public static DB = pg()({
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  })
 
   public static async initDatabase(): Promise<void> {
     if (NODE_ENV !== DEVELOPMENTMODE) {
