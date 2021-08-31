@@ -6,13 +6,14 @@ import useCarDetail from '../hook/useCarDetail'
 import { IModelRef } from '../interface/interface'
 
 const CarsListScreen = (): JSX.Element => {
-  const { carDetail, InfoCars, setCarSelected } = useCarDetail()
+  const { carDetail, InfoCars, setCarSelected, setTab } = useCarDetail()
   const ModalRef = createRef<IModelRef>()
 
   const handleSelectCar = useCallback(
     (carId: string) => {
       ModalRef.current?.handleClose()
       setCarSelected(+carId)
+      setTab(1)
     },
     [setCarSelected, ModalRef]
   )
