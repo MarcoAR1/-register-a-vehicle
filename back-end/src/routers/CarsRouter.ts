@@ -10,6 +10,7 @@ import { InsidesMannager } from '../mannagers/InsidesMannager'
 import { MotorsMannager } from '../mannagers/MotorsMannager'
 import { WheelsMannager } from '../mannagers/WheelsMannager'
 import { NotFoundError } from '../errors/NotFoundError'
+import { carsSeeds } from '../seeds/carsSeeds'
 
 export class CarsRouter extends BaseRouter {
   private CarsMannager: CarsMannager
@@ -28,6 +29,7 @@ export class CarsRouter extends BaseRouter {
     this.MotorsMannager = new MotorsMannager()
     this.WheelsMannager = new WheelsMannager()
     this.buildRoutes()
+    this.seed()
   }
 
   private async createCar(req: express.Request, res: express.Response) {
@@ -115,5 +117,20 @@ export class CarsRouter extends BaseRouter {
     this.router.put(PARAM_PATH_ID, checkIdIsANumber, this.updateCar.bind(this))
     this.router.get(PARAM_PATH_ID, checkIdIsANumber, this.getCarById.bind(this))
     this.router.get(PATH_INICIAL, this.getCars.bind(this))
+  }
+
+  private async seed(): Promise<void> {
+    const existCars = await this.CarsMannager.getCarById(1)
+    if (existCars) {
+      console.log('not need seed')
+      return
+    }
+    console.log('trying seeders the seed')
+    await Promise.allSettled(
+      carsSeeds.map(async (car) => {
+        this.CarsMannager.createCar(car)
+      })
+    )
+    console.log('Seeds created')
   }
 }

@@ -7,12 +7,16 @@ import CarsListScreen from './screen/CarsListScreen'
 import useStyles from './style/appStyle'
 
 export const App = (): JSX.Element => {
-  const { carDetail, carSelected } = useCarDetail()
+  const { carDetail, carSelected, InfoCars } = useCarDetail()
   const classes = useStyles()
 
   const inProgress =
     (!carDetail.car && carSelected) ||
-    (carDetail.car && carSelected && +carDetail.car.id !== carSelected)
+    (carDetail.car && carSelected && +carDetail.car.id !== carSelected) ||
+    !InfoCars
+
+
+
 
   return (
     <>
