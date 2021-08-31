@@ -48,7 +48,6 @@ export default class Car extends BaseModel {
   }
 
   public async getById(id: number): Promise<CarDTO> {
-    console.log(id)
     const res = await this.findOne({ id }, this.tableName)
     return new CarDTO(res)
   }

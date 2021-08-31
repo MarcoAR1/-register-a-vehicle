@@ -13,11 +13,11 @@ export const carsSeeds = [
     tipo_de_carrocería: 'SUV',
     image: JSON.stringify({
       front: 'https://www.auto-data.net/images/f121/Proton-X50.jpg',
-      back: 'https://www.auto-data.net/images/f35/Proton-X50.jpg',
       left: 'https://www.auto-data.net/images/f113/Proton-X50.jpg',
-      right: 'https://www.auto-data.net/images/f41/Proton-X50.jpg',
+      back: 'https://www.auto-data.net/images/f35/Proton-X50.jpg',
       inside: 'https://www.auto-data.net/images/f71/Proton-X50.jpg',
       engine: 'https://www.auto-data.net/images/f63/Proton-X50.jpg',
+      right: 'https://www.auto-data.net/images/f41/Proton-X50.jpg',
     }),
   },
   {
@@ -35,14 +35,14 @@ export const carsSeeds = [
     image: JSON.stringify({
       front:
         'https://www.auto-data.net/images/f18/Lamborghini-Gallardo-LP-550-2.jpg',
-      back: 'https://www.auto-data.net/images/f18/Lamborghini-Gallardo-LP-550-2_1.jpg',
       left: 'https://www.auto-data.net/images/f15/Lamborghini-Gallardo-LP-550-2.jpg',
-      right:
-        'https://www.auto-data.net/images/f4/Lamborghini-Gallardo-LP-550-2.jpg',
+      back: 'https://www.auto-data.net/images/f18/Lamborghini-Gallardo-LP-550-2_1.jpg',
       inside:
         'https://www.auto-data.net/images/f12/Lamborghini-Gallardo-LP-550-2.jpg',
       engine:
         'https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/1200/public/media/image/2017/03/622423-como-conseguir-lamborghini-gallardo-18000-euros.jpg?itok=5EnYjHgo',
+      right:
+        'https://www.auto-data.net/images/f4/Lamborghini-Gallardo-LP-550-2.jpg',
     }),
   },
   {
@@ -60,14 +60,14 @@ export const carsSeeds = [
     image: JSON.stringify({
       front:
         'https://www.auto-data.net/images/f44/Alfa-Romeo-8C-Competizione.jpg',
-      back: 'https://www.auto-data.net/images/f36/Alfa-Romeo-8C-Competizione.jpg',
       left: 'https://www.auto-data.net/images/f36/Alfa-Romeo-8C-Competizione_2.jpg',
-      right:
-        'https://www.auto-data.net/images/f76/Alfa-Romeo-8C-Competizione.jpg',
+      back: 'https://www.auto-data.net/images/f36/Alfa-Romeo-8C-Competizione.jpg',
       inside:
         'https://www.autodata1.com/media/alfa-romeo/pics/alfa-romeo-8c-competizione-%5B88%5D.jpg',
       engine:
         'https://www.auto-data.net/images/f44/Alfa-Romeo-8C-Competizione.jpg',
+      right:
+        'https://www.auto-data.net/images/f76/Alfa-Romeo-8C-Competizione.jpg',
     }),
   },
   {
@@ -84,11 +84,11 @@ export const carsSeeds = [
     tipo_de_carrocería: 'Liftback',
     image: JSON.stringify({
       front: 'https://www.auto-data.net/images/f68/Tesla-Model-S.jpg',
-      back: 'https://www.auto-data.net/images/f30/file8139016.jpg',
       left: 'https://www.auto-data.net/images/f42/Tesla-Model-S.jpg',
-      right: 'https://www.auto-data.net/images/f42/Tesla-Model-S_2.jpg',
+      back: 'https://www.auto-data.net/images/f30/file8139016.jpg',
       inside: 'https://www.auto-data.net/images/f0/file3193979.jpg',
       engine: 'https://www.auto-data.net/images/f17/file8410675.jpg',
+      right: 'https://www.auto-data.net/images/f42/Tesla-Model-S_2.jpg',
     }),
   },
   {
@@ -105,11 +105,11 @@ export const carsSeeds = [
     tipo_de_carrocería: 'Coupe',
     image: JSON.stringify({
       front: 'https://www.auto-data.net/images/f76/BMW-M8-Gran-Coupe-F93.jpg',
-      back: 'auto-data.net/images/f87/BMW-M8-Gran-Coupe-F93.jpg',
       left: 'https://www.auto-data.net/images/f93/BMW-M8-Gran-Coupe-F93.jpg',
-      right: 'https://www.auto-data.net/images/f102/BMW-M8-Gran-Coupe-F93.jpg',
+      back: 'auto-data.net/images/f87/BMW-M8-Gran-Coupe-F93.jpg',
       inside: 'https://www.auto-data.net/images/f31/BMW-M8-Gran-Coupe-F93.jpg',
       engine: 'https://www.auto-data.net/images/f33/BMW-M8-Gran-Coupe-F93.jpg',
+      right: 'https://www.auto-data.net/images/f102/BMW-M8-Gran-Coupe-F93.jpg',
     }),
   },
 ]
