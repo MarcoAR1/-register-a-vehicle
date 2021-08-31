@@ -4,7 +4,7 @@
     "target": "ES6",
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": ".",
     "baseUrl": "./src",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
