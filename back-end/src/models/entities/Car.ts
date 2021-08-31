@@ -38,12 +38,17 @@ export default class Car extends BaseModel {
     return new CarDTO(res)
   }
 
-  public async getAll(): Promise<CarDTO[]> {
-    const res: ICar[] = await this.findAll({ tableName: this.tableName })
+  public async getAll(limit?: number, offset?: number): Promise<CarDTO[]> {
+    const res: ICar[] = await this.findAll({
+      tableName: this.tableName,
+      limit,
+      offset,
+    })
     return res.map((e) => new CarDTO(e))
   }
 
   public async getById(id: number): Promise<CarDTO> {
+    console.log(id)
     const res = await this.findOne({ id }, this.tableName)
     return new CarDTO(res)
   }

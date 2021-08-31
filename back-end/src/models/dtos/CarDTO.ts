@@ -12,7 +12,7 @@ export class CarDTO {
   tipo_de_carrocería: string
   numero_de_puertas: string
   numero_de_plazas: string
-  image: string
+  image?: string
 
   constructor(car: ICar) {
     car.id && (this.id = car.id)

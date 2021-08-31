@@ -4,7 +4,7 @@ export type ICar = {
   email: string
   km: string
   precio: string
-  image:string
+  image?:string
   marca: string
   modelo: string
   generación: string

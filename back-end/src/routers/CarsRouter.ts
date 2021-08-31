@@ -67,13 +67,13 @@ export class CarsRouter extends BaseRouter {
     const request = await Promise.allSettled([
       this.DocumentsMannager.getDocumentCar_id(car_id),
       this.BodyworksMannager.getBodyworkCar_id(car_id),
-      this.InsidesMannager.getInsideById(car_id),
-      this.MotorsMannager.getMotorById(car_id),
+      this.InsidesMannager.getInsideCar_id(car_id),
+      this.MotorsMannager.getMotorCar_id(car_id),
       this.WheelsMannager.getWheelsCar_id(car_id),
       this.CarsMannager.getCarById(car_id),
     ])
-    if (request[0]['status'] === 'rejected')
-      throw new NotFoundError(request[0].reason.message)
+    if (request[5]['status'] === 'rejected')
+      throw new NotFoundError(request[5].reason.message)
 
     const car = request[5]['value']
     const image = car.image
@@ -120,7 +120,7 @@ export class CarsRouter extends BaseRouter {
   }
 
   private async seed(): Promise<void> {
-    const existCars = await this.CarsMannager.getCarById(1)
+    const existCars = (await this.CarsMannager.getAllCars(1))[0]
     if (existCars) {
       console.log('not need seed')
       return
@@ -128,7 +128,9 @@ export class CarsRouter extends BaseRouter {
     console.log('trying seeders the seed')
     await Promise.allSettled(
       carsSeeds.map(async (car) => {
-        this.CarsMannager.createCar(car)
+        const res = await this.CarsMannager.createCar(car)
+        if (!res.id) throw new Error('Error al crear el auto')
+        await this.generateChildrenTable(res.id)
       })
     )
     console.log('Seeds created')

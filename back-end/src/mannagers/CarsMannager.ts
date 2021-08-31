@@ -11,8 +11,8 @@ export class CarsMannager {
     return this.querys.create(car)
   }
 
-  async getAllCars(): Promise<CarDTO[]> {
-    return this.querys.getAll()
+  async getAllCars(limit?: number, offset?: number): Promise<CarDTO[]> {
+    return this.querys.getAll(limit, offset)
   }
 
   async getCarById(id: number): Promise<CarDTO> {

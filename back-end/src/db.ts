@@ -17,7 +17,7 @@ export default class DATABASE {
   public static async initDatabase(): Promise<void> {
     if (NODE_ENV !== DEVELOPMENTMODE) {
       console.log(
-        `Database ${DB_NAME} is not in development mode try create models`
+        `${NODE_ENV} mode try create models`
       )
       await Models.initModels()
       console.log('all tables created')
