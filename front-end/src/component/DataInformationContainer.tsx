@@ -21,7 +21,7 @@ const DataInformationContainer = (): JSX.Element => {
     [setTab]
   )
   return (
-    <Container>
+    <Container >
       <AppBar
         position="static"
         color="default"

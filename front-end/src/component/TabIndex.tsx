@@ -1,25 +1,27 @@
 import { Tab, Tabs } from '@material-ui/core'
 import React from 'react'
 import { fixedKeyName } from '../utils/fixedKeyName'
-const a11yProps = (index: any) => {
+const a11yProps = (index: number) => {
   return {
     id: `full-width-tab-${index}`,
     'aria-controls': `full-width-tabpanel-${index}`,
   }
 }
 
-const TabIndex = ({
-  keyForTabs,
-  value,
-  handleChange,
-}: {
+interface ITabIndexProps {
   keyForTabs: string[]
   value: number
   handleChange: (
     event: React.ChangeEvent<Record<string, unknown>>,
     newValue: number
   ) => void
-}): JSX.Element => {
+}
+
+const TabIndex = ({
+  keyForTabs,
+  value,
+  handleChange,
+}: ITabIndexProps): JSX.Element => {
   return (
     <div
       style={{

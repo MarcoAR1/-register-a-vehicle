@@ -4,7 +4,7 @@ import { fixedKeyName } from '../utils/fixedKeyName'
 import { Typography } from '@material-ui/core'
 import useCarDetail from '../hook/useCarDetail'
 import { updateDetailsCar } from '../service/updateDetailsCar'
-import useStyles from '../stylemodule/PanelDetailCardStlye'
+import useStyles from '../style/PanelDetailCardStlye'
 import { PanelDetailCardProps } from '../interface/interface'
 
 const PanelDetailCard = ({ index }: PanelDetailCardProps): JSX.Element => {

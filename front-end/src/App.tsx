@@ -1,34 +1,27 @@
-import React, { useEffect } from 'react'
-import CarImage from './component/CarImage'
-import DataInformationContainer from './component/DataInformationContainer'
+import React from 'react'
+import './index.css'
+import ProgressCenterComponent from './component/ProgressCenterComponent'
 import useCarDetail from './hook/useCarDetail'
-import { getOneCar } from './service/getInfoCar'
+import CarDetailScreen from './screen/CarDetailScreen'
+import CarsListScreen from './screen/CarsListScreen'
+import useStyles from './style/appStyle'
+
 export const App = (): JSX.Element => {
-  const { setCarDetail, setKeyCarDetail, setCarImage, setKeyCarImage } =
-    useCarDetail()
-  useEffect(() => {
-    getOneCar(1)
-      .then((res) =>
-        res
-          .json()
-          .then((data) => {
-            const image = JSON.parse(data.image)
-            setCarImage(image)
-            setKeyCarImage(Object.keys(image))
-            delete data.image
-            setCarDetail(data)
-            setKeyCarDetail(Object.keys(data))
-          })
-          .catch((err) => console.log(err))
-      )
-      .catch((err) => console.log(err))
-  }, [])
+  const { carDetail, carSelected } = useCarDetail()
+  const classes = useStyles()
+
+  const inProgress =
+    (!carDetail.car && carSelected) ||
+    (carDetail.car && carSelected && +carDetail.car.id !== carSelected)
 
   return (
-    <div className="App">
-      <CarImage />
-      <DataInformationContainer />
-    </div>
+    <>
+      {inProgress && <ProgressCenterComponent />}
+      <div className={classes.container}>
+        <CarsListScreen />
+        {carDetail.car && <CarDetailScreen />}
+      </div>
+    </>
   )
 }
 

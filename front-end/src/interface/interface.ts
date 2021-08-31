@@ -7,10 +7,8 @@ export interface IContextValueCarDetail {
   setCarDetail: React.Dispatch<
     React.SetStateAction<ObjectIndex<ObjectIndex<string>>>
   >
-  InfoCars: ObjectIndex<ObjectIndex<string>>[]
-  setInfoCars: React.Dispatch<
-    React.SetStateAction<ObjectIndex<ObjectIndex<string>>[]>
-  >
+  InfoCars: ObjectIndex<string>[]
+  setInfoCars: React.Dispatch<React.SetStateAction<ObjectIndex<string>[]>>
   keyCarDetail: string[]
   setKeyCarDetail: React.Dispatch<React.SetStateAction<string[]>>
   tab: number
@@ -19,8 +17,13 @@ export interface IContextValueCarDetail {
   setCarImage: React.Dispatch<React.SetStateAction<ObjectIndex<string>>>
   keyCarImage: string[]
   setKeyCarImage: React.Dispatch<React.SetStateAction<string[]>>
+  carSelected: number | null
+  setCarSelected: React.Dispatch<React.SetStateAction<number | null>>
 }
-
+export interface ListCarsProps {
+  InfoCars: ObjectIndex<string>[]
+  onClick: (carId: string) => void
+}
 export interface CarDetailProviderProps {
   children: React.ReactChild
 }
@@ -33,4 +36,16 @@ export interface RatingStartViewProps {
 
 export interface PanelDetailCardProps {
   index: string
+}
+
+export interface IModalProps {
+  LabelButton: string
+  Title: string
+  condicional: boolean
+  children: React.ReactChild
+}
+
+export interface IModelRef {
+  handleOpen: () => void
+  handleClose: () => void
 }
