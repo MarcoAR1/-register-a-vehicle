@@ -3,7 +3,7 @@ import * as pg from 'pg-promise'
 import { NODE_ENV } from './utils/config'
 import Models from './models/index'
 export default class DATABASE {
-  public static DB = pg()(`${process.env.DATABASE_URL}`)
+  public static DB = pg()(`${process.env.DATABASE_URL}?ssl=true`)
 
   public static async initDatabase(): Promise<void> {
     if (NODE_ENV !== DEVELOPMENTMODE) {
