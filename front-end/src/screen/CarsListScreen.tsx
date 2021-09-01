@@ -13,7 +13,7 @@ const CarsListScreen = (): JSX.Element => {
     (carId: string) => {
       ModalRef.current?.handleClose()
       setCarSelected(+carId)
-      setTab(1)
+      setTab(0)
     },
     [setCarSelected, ModalRef]
   )
